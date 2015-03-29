@@ -1,2 +1,4 @@
 safehands.pem
 .idea
+.capistrano
+config/database.yml
