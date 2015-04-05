@@ -36,6 +36,7 @@ GEM
     net-ssh (2.9.2)
     net-ssh-gateway (1.2.0)
       net-ssh (>= 2.6.5)
+    pg (0.18.1)
     rack (1.6.0)
     rack-protection (1.5.3)
       rack
@@ -65,6 +66,7 @@ PLATFORMS
 DEPENDENCIES
   capistrano (~> 2.15.5)
   capistrano-unicorn
+  pg
   rake
   rvm-capistrano
   sinatra
