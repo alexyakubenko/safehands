@@ -1,27 +1,48 @@
-lock '3.3.5'
+require 'bundler/capistrano'
+require 'rvm/capistrano'
+require 'capistrano-unicorn'
 
-server 'safehands.by', user: 'deployer'
+server 'safehands.by', :app, :db, primary: true
+set :user, 'deployer'
 
-set :password, 'SanityEclipse32;'
+set :rvm_ruby_string, 'ruby-2.2.0@safehands'
+set :rvm_type, :system
+set :rvm_path, "/home/#{ user }/.rvm"
 
 set :application, 'safehands'
-set :repo_url, 'git@github.com:alexyakubenko/safehands.git'
+set :deploy_to, "/home/#{ user }/apps/#{ application }"
+set :deploy_via, :remote_cache
+set :use_sudo, false
 
-#set :pty, true
+set :scm, 'git'
+set :repository, "git@github.com:alexyakubenko/#{ application }.git"
+set :branch, 'master'
 
-set :linked_files, fetch(:linked_files, []).push('config/database.yml')
+default_run_options[:pty] = true
+ssh_options[:forward_agent] = true
 
-set :rvm_ruby_version, 'ruby-head@safehands'
-
-set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids')
-
-# Default value for default_env is {}
-# set :default_env, { path: "/opt/ruby/bin:$PATH" }
-
-after 'deploy:publishing', 'deploy:restart'
+after 'deploy', 'deploy:cleanup' # keep only the last 5 releases
 
 namespace :deploy do
-  task :restart do
-    invoke 'unicorn:reload'
+  %w[start stop restart].each do |command|
+    desc "#{ command } unicorn server"
+    task command, roles: :app, except: { no_release: true } do
+      unicorn.send(command)
+    end
+  end
+
+  task :symlink_config, roles: :app do
+    run "ln -nfs #{ shared_path }/config/database.yml #{ release_path }/config/database.yml"
+  end
+
+  after 'deploy:finalize_update', 'deploy:symlink_config'
+end
+
+namespace :nginx do
+  %w[start stop restart reload].each do |command|
+    desc "#{ command }ing nginx"
+    task command, roles: :app, except: { no_release: true } do
+      run "service nginx #{ command }"
+    end
   end
 end
