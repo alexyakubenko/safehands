@@ -1,4 +1,4 @@
-require 'sinatra'
+require './env'
 
 get '/' do
   'Hello  World'
