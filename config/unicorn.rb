@@ -11,7 +11,6 @@ timeout 30
 preload_app true
 
 after_fork do |server, worker|
-  puts Dir.pwd
   db_config = YAML::load(File.open(File.join(Dir.pwd, 'config', 'database.yml')))
   ActiveRecord::Base.establish_connection(db_config)
 end
