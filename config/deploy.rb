@@ -9,6 +9,8 @@ set :rvm_ruby_string, 'ruby-2.2.0@safehands'
 set :rvm_type, :system
 set :rvm_path, "/home/#{ user }/.rvm"
 
+set :unicorn_pid, "#{ current_path }/tmp/pids/unicorn.pid"
+
 set :application, 'safehands'
 set :deploy_to, "/home/#{ user }/apps/#{ application }"
 set :deploy_via, :remote_cache
@@ -17,6 +19,7 @@ set :use_sudo, false
 set :scm, 'git'
 set :repository, "git@github.com:alexyakubenko/#{ application }.git"
 set :branch, 'master'
+
 
 default_run_options[:pty] = true
 ssh_options[:forward_agent] = true
