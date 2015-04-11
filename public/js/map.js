@@ -1,4 +1,4 @@
-function height() {
+function getWindowHeight() {
   var myHeight = 0;
 
   if (typeof( window.innerWidth ) == 'number' ) {
@@ -15,11 +15,16 @@ function height() {
   return myHeight;
 }
 
+function resizeMap() {
+  document.getElementById('map').style.height = getWindowHeight() + 'px';
+}
+
+window.onresize = resizeMap;
+
 window.onload = function() {
-
-  document.getElementById('map').style.height = height() + 'px';
-
   var myMap;
+
+  resizeMap();
 
   ymaps.ready(function() {
     var route1 = new ymaps.Polyline([
@@ -50,7 +55,7 @@ window.onload = function() {
     });
 
     myMap = new ymaps.Map('map', {
-      center: [53.87432, 27.508791],
+      center: [53.875099, 27.512741],
       zoom: 16,
       controls: ['zoomControl'],
       type: 'yandex#publicMap'
