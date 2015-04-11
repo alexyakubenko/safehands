@@ -1,5 +1,5 @@
 require './env'
 
 get '/' do
-  'Hello  World'
+  slim :layout
 end
