@@ -1,19 +1,35 @@
 doctype html
 html
   head
-    title Надежные Руки
+    title СТО Надежные Руки
     meta name='keywords' content='шиномонтаж, сто, то, шины, полировка, химчистка, надежные руки'
     meta name='author' content='Alex Yakubenko'
     meta name='description' content='ООО Надежные Руки'
     meta name='viewport' content='width=device-width, initial-scale=1.0'
+
     link rel='icon' type='image/ico' href='favicon.ico'
+
     link href='http://fonts.googleapis.com/css?family=Open+Sans&subset=cyrillic' rel='stylesheet' type='text/css'
-    link href='/css/app.css' rel='stylesheet' type='text/css'
+
+    link href='/sprite.css' rel='stylesheet' type='text/css'
+    link href='/app.css' rel='stylesheet' type='text/css'
+
     script src='http://api-maps.yandex.ru/2.1/?lang=ru_RU' type='text/javascript'
-    script src='/js/map.js' type='text/javascript'
+    script src='/app.js' type='text/javascript'
   body
     #header
-      Надежные руки
+      #right-header
+        .title СТО Надежные Руки
+        .contacts
+          .phone
+            'Александр:  +375 (29) 574 22 95
+            span.icon-mts.icon
+          .phone
+            'Алексей:  +375 (29) 672 91 69
+            span.icon-velcom.icon
+
     #map
+
     #footer
-      #schedule-button Записаться на шиномонтаж
+      #copy-rights ООО «Надежные Руки» ©, 2015
+      #schedule-button ЗАПИСАТЬСЯ НА ШИНОМОНТАЖ

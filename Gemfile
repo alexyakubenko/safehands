@@ -7,6 +7,11 @@ gem 'pg'
 gem 'unicorn'
 
 gem 'slim'
+gem 'sass'
+gem 'uglifier'
+
+gem 'sprite-factory'
+gem 'chunky_png'
 
 group :development do
   gem 'capistrano', '~> 2.15.5'

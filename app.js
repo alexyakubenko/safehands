@@ -46,12 +46,13 @@ window.onload = function() {
       [53.873324249999996, 27.511867659999997],
       [53.87417384, 27.513444799999995]
     ], {
-      balloonContent: "Маршрут проезда"
+      balloonContent: 'Маршрут проезда'
     }, {
       balloonCloseButton: false,
-      strokeColor: "#E63E92",
-      strokeWidth: 6,
-      strokeOpacity: 0.33
+      strokeColor: ['#000088', '#E63E92'],
+      strokeWidth: [7, 2],
+      strokeStyle: [0, 'dash'],
+      strokeOpacity: [0.23, 1]
     });
 
     myMap = new ymaps.Map('map', {

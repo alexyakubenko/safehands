@@ -1,5 +1,9 @@
 require 'sinatra'
 
+set :views, './'
+
+Encoding.default_external = 'utf-8'
+
 unless ActiveRecord::Base.connected?
   db_config = YAML::load(File.open(File.join(settings.root, 'config', 'database.yml')))
 

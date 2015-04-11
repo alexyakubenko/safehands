@@ -1,0 +1,58 @@
+body
+  margin: 0
+  text-align: center
+  font-family: 'Open Sans', sans-serif
+
+#footer, #header
+  width: 100%
+  color: #ffffff
+
+#header
+  #right-header
+    right: 0
+    z-index: 1
+    position: absolute
+    background: rgba(0, 0, 0, 0.5)
+    padding: 5px 20px 10px 30px
+    border-radius: 0 0 0 10px
+    text-align: right
+    .title
+      font-size: 25px
+    .contacts
+      font-size: 12px
+      .phone
+        margin: 1px 20px 1px 0
+        .icon
+          position: absolute
+          margin: 0 0 0 4px
+
+#footer
+  bottom: 0
+  background: rgba(0, 0, 0, 0.5)
+  position: absolute
+  z-index: 1
+
+  #copy-rights
+    position: absolute
+    font-size: 12px
+    margin: 35px 0 0 8px
+
+  #schedule-button
+    height: 43px
+    line-height: 44px
+    background-color: #e74c3c
+    margin: 8px 0
+    padding: 0 25px
+    font-size: 15px
+    cursor: pointer
+    display: inline-block
+
+    border: 1px solid transparent
+
+    border-radius: 4px
+    -webkit-border-radius: 4px
+    -moz-border-radius: 4px
+
+    &:hover
+      background-color: #d62c1a
+      border-color: #cd2a19

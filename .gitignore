@@ -1,4 +1,9 @@
-safehands.pem
 .idea
 .capistrano
+.sass-cache
+
+public
+
+safehands.pem
+
 config/database.yml
