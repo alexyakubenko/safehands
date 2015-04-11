@@ -38,12 +38,3 @@ namespace :deploy do
 
   after 'deploy:finalize_update', 'deploy:symlink_config'
 end
-
-namespace :nginx do
-  %w[start stop restart reload].each do |command|
-    desc "#{ command }ing nginx"
-    task command, roles: :app, except: { no_release: true } do
-      run "service nginx #{ command }"
-    end
-  end
-end
