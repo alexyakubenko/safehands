@@ -74,6 +74,7 @@ window.onload = function() {
     });
 
     myMap.geoObjects.add(route).add(mark);
+    myMap.controls.add(new ymaps.control.TypeSelector(), { position: { top: 128, right: 20 } });
 
     mark.events.add('mouseenter', function (e) {
       e.get('target').options.set('preset', 'islands#greenStretchyIcon');
