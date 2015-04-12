@@ -57,12 +57,10 @@ window.onload = function() {
         mark = new ymaps.Placemark(
             [53.87417384, 27.513444799999995],
             {
-              hintContent: "Надежные Руки"
-            }, {
-              iconLayout: 'default#image',
-              iconImageHref: 'logo_64.png',
-              iconImageSize: [30, 64],
-              iconImageOffset: [-3, -65]
+              hintContent: "Надежные Руки",
+              balloonContentHeader: 'ООО',
+              balloonContentBody: 'Надежные Руки',
+              balloonContentFooter: 'СТО, Шиномонтаж, Полировка, Химчистка'
             }
         );
 
