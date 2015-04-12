@@ -12,7 +12,7 @@ get '/' do
       'icons',
       library: :chunkypng,
       layout: :packed,
-      selector: 'span.icon-',
+      selector: '.icon-',
       output_image: 'public/sprite.png',
       output_style: 'public/sprite.css'
   )
