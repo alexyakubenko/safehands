@@ -55,12 +55,14 @@ window.onload = function() {
           strokeOpacity: [0.23, 1]
         }),
         mark = new ymaps.Placemark(
-            [53.87417384, 27.513444799999995],
-            {
-              hintContent: "Надежные Руки",
+            [53.87417384, 27.513444799999995], {
+              iconContent: 'Наше располождение',
+              hintContent: 'Надежные Руки',
               balloonContentHeader: 'ООО',
               balloonContentBody: 'Надежные Руки',
               balloonContentFooter: 'СТО, Шиномонтаж, Полировка, Химчистка'
+            }, {
+              preset: 'islands#blueStretchyIcon'
             }
         );
 
@@ -72,5 +74,11 @@ window.onload = function() {
     });
 
     myMap.geoObjects.add(route).add(mark);
+
+    mark.events.add('mouseenter', function (e) {
+      e.get('target').options.set('preset', 'islands#greenStretchyIcon');
+    }).add('mouseleave', function (e) {
+      e.get('target').options.set('preset', 'islands#blueStretchyIcon');
+    });
   });
 };
