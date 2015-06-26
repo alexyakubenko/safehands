@@ -15,22 +15,19 @@ html
     link href='/app.css' rel='stylesheet' type='text/css'
 
     script src='http://api-maps.yandex.ru/2.1.27/?lang=ru_RU&load=Map,Polyline,control.ZoomControl,control.TypeSelector,Placemark,geoObject.addon.balloon,geoObject.addon.hint,route,templateLayoutFactory' type='text/javascript'
+    script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.1/angular.min.js' type='text/javascript'
     script src='/app.js' type='text/javascript'
-  body
-    #header
+
+  body data-ng-app='safeHandsApp'
+    #header data-ng-controller='HeaderCtrl'
       #right-header
-        a.title href='/' «Надежные Руки»
+        a.title href='/' {{ header }}
         .contacts
-          .phone
-            a href='https://vk.com/id218785045' target='_blank' Александр
+          .phone data-ng-repeat='contact in contacts'
+            a data-ng-href='{{ contact.vk_url }}' target='_blank' {{ contact.name }}
             ':
-            a.number href='tel:+375295742295' +375 (29) 574 22 95
-            .icon-mts.icon
-          .phone
-            a href='https://vk.com/id143235044' target='_blank' Алексей
-            ':
-            a.number href='tel:+375296729169' +375 (29) 672 91 69
-            .icon-velcom.icon
+            a.number data-ng-href="{{ contact.phone | phoneLink }}" {{ contact.phone }}
+            .icon data-ng-class="'icon-' + contact.gsm"
 
     #map
 
