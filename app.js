@@ -31,9 +31,9 @@ window.onload = function() {
             [53.904941, 27.52385], {
               iconContent: 'Надежные Руки',
               hintContent: 'Шиномонтаж, СТО, Полировка, Химчистка',
-              balloonContentHeader: 'г. Минск, ул. Харьковская 2А',
-              balloonContentBody: 'ООО «Надежные Руки»',
-              balloonContentFooter: 'СТО, Шиномонтаж, Полировка, Химчистка'
+              balloonContentHeader: 'ООО «Надежные Руки»',
+              balloonContentBody: 'СТО, Шиномонтаж, Полировка, Химчистка',
+              balloonContentFooter: 'г. Минск, ул. Харьковская 2А'
             }, {
               preset: 'islands#blueStretchyIcon'
             }
