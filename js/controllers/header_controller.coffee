@@ -6,8 +6,4 @@ class HeaderController
       { name: 'Алексей',   vk_url: 'https://vk.com/id143235044', phone: '+375 (29) 672 91 69', gsm: 'velcom' }
     ]
 
-    $scope.phoneLink = (phone) ->
-      "tel:#{ phone.replace(/[^\+\d]/g, '') }"
-
 @SH.controller('HeaderCtrl', ['$scope', HeaderController])
-

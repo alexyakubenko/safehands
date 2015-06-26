@@ -2,17 +2,19 @@
 
 require './env'
 require 'sprite_factory'
+require 'pry'
 
-get '/' do
-  IO.write(
-      'public/index.html',
-      slim(:app)
-  )
+get '*' do
+  IO.write('public/index.html', slim(:app))
 
-  IO.write(
-      'public/app.css',
-      sass(:app, style: :compressed)
-  )
+  views_public_dir = 'public/views'
+  Dir.mkdir(views_public_dir) unless Dir.exist?(views_public_dir)
+
+  Dir.glob("views/**/*.slim").each do |view_file_path|
+    IO.write("#{ views_public_dir }/#{ File.basename(view_file_path, '.slim') }", Slim::Template.new(view_file_path).render(self))
+  end
+
+  IO.write('public/app.css', sass(:app, style: :compressed))
 
   IO.write(
       'public/app.js',
