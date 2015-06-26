@@ -27,37 +27,10 @@ window.onload = function() {
   resizeMap();
 
   ymaps.ready(function() {
-    var route = new ymaps.Polyline([
-          // Указываем координаты вершин ломаной.
-          [53.8775088, 27.51766131],
-          [53.87689385, 27.519324280000003],
-          [53.87657052, 27.519013140000002],
-          [53.87642471, 27.51902387],
-          [53.87567027, 27.52016112],
-          [53.87548007, 27.520386430000002],
-          [53.87520112, 27.51986072],
-          [53.87433253, 27.51832649],
-          [53.87347661, 27.51682446],
-          [53.872855259999994, 27.515730119999997],
-          [53.87205004, 27.513992039999998],
-          [53.87197395, 27.513777469999997],
-          [53.872550929999996, 27.512715309999997],
-          [53.87308966, 27.511781829999997],
-          [53.873324249999996, 27.511867659999997],
-          [53.87417384, 27.513444799999995]
-        ], {
-          balloonContent: 'Маршрут проезда'
-        }, {
-          balloonCloseButton: false,
-          strokeColor: ['#000088', '#E63E92'],
-          strokeWidth: [7, 2],
-          strokeStyle: [0, 'dash'],
-          strokeOpacity: [0.23, 1]
-        }),
-        mark = new ymaps.Placemark(
-            [53.87417384, 27.513444799999995], {
-              iconContent: 'Наше располождение',
-              hintContent: 'Надежные Руки',
+    var mark = new ymaps.Placemark(
+            [53.904941, 27.52385], {
+              iconContent: 'Шиномонтаж "Надежные Руки"',
+              hintContent: 'г. Минск, ул. Харьковская 2А',
               balloonContentHeader: 'ООО',
               balloonContentBody: 'Надежные Руки',
               balloonContentFooter: 'СТО, Шиномонтаж, Полировка, Химчистка'
@@ -67,19 +40,35 @@ window.onload = function() {
         );
 
     myMap = new ymaps.Map('map', {
-      center: [53.875099, 27.512741],
+      center: [53.907565, 27.526196],
       zoom: 16,
       controls: ['zoomControl'],
-      type: 'yandex#publicMap'
+      type: 'yandex#map'
     });
 
-    myMap.geoObjects.add(route).add(mark);
+    myMap.geoObjects.add(mark);
     myMap.controls.add(new ymaps.control.TypeSelector(), { position: { top: 128, right: 20 } });
 
     mark.events.add('mouseenter', function (e) {
       e.get('target').options.set('preset', 'islands#greenStretchyIcon');
     }).add('mouseleave', function (e) {
       e.get('target').options.set('preset', 'islands#blueStretchyIcon');
+    });
+
+
+    ymaps.route([
+      '53.90551627, 27.53785000',
+      '53.90600409, 27.52183597'
+    ], {
+      multiRoute: true
+
+    }).then(function(route) {
+      var gatesWayPoint = route.getWayPoints().get(1);
+      ymaps.geoObject.addon.balloon.get(gatesWayPoint);
+      gatesWayPoint.options.set({
+        iconContentLayout: ymaps.templateLayoutFactory.createClass('Въезд под шлагбаум')
+      });
+      myMap.geoObjects.add(route);
     });
   });
 };
