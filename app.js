@@ -29,15 +29,30 @@ window.onload = function() {
   ymaps.ready(function() {
     var mark = new ymaps.Placemark(
             [53.904941, 27.52385], {
-              iconContent: 'Шиномонтаж "Надежные Руки"',
-              hintContent: 'г. Минск, ул. Харьковская 2А',
-              balloonContentHeader: 'ООО',
-              balloonContentBody: 'Надежные Руки',
+              iconContent: 'Надежные Руки',
+              hintContent: 'Шиномонтаж, СТО, Полировка, Химчистка',
+              balloonContentHeader: 'г. Минск, ул. Харьковская 2А',
+              balloonContentBody: 'ООО «Надежные Руки»',
               balloonContentFooter: 'СТО, Шиномонтаж, Полировка, Химчистка'
             }, {
               preset: 'islands#blueStretchyIcon'
             }
-        );
+        ),
+
+        polyLine = new ymaps.Polyline([
+          [53.90600409, 27.52183597],
+          [53.90583304, 27.52313416],
+          [53.90561764, 27.52353113],
+          [53.904941, 27.52385]
+        ], {
+          balloonContent: 'Проезд по стоянке'
+        }, {
+          balloonCloseButton: false,
+          strokeColor: ['#000088', '#E63E92'],
+          strokeWidth: [7, 2],
+          strokeStyle: [0, 'dash'],
+          strokeOpacity: [0.23, 1]
+        });
 
     myMap = new ymaps.Map('map', {
       center: [53.907565, 27.526196],
@@ -47,6 +62,7 @@ window.onload = function() {
     });
 
     myMap.geoObjects.add(mark);
+
     myMap.controls.add(new ymaps.control.TypeSelector(), { position: { top: 128, right: 20 } });
 
     mark.events.add('mouseenter', function (e) {
@@ -55,20 +71,19 @@ window.onload = function() {
       e.get('target').options.set('preset', 'islands#blueStretchyIcon');
     });
 
-
     ymaps.route([
       '53.90551627, 27.53785000',
       '53.90600409, 27.52183597'
     ], {
       multiRoute: true
-
     }).then(function(route) {
       var gatesWayPoint = route.getWayPoints().get(1);
       ymaps.geoObject.addon.balloon.get(gatesWayPoint);
       gatesWayPoint.options.set({
         iconContentLayout: ymaps.templateLayoutFactory.createClass('Въезд под шлагбаум')
       });
-      myMap.geoObjects.add(route);
+
+      myMap.geoObjects.add(route).add(polyLine);
     });
   });
 };
