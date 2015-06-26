@@ -45,9 +45,8 @@ window.onload = function() {
           [53.90561764, 27.52353113],
           [53.904941, 27.52385]
         ], {
-          balloonContent: 'Проезд по стоянке'
+          hintContent: 'Проезд по стоянке грузовиков'
         }, {
-          balloonCloseButton: false,
           strokeColor: ['#000088', '#E63E92'],
           strokeWidth: [7, 2],
           strokeStyle: [0, 'dash'],
@@ -78,9 +77,9 @@ window.onload = function() {
       multiRoute: true
     }).then(function(route) {
       var gatesWayPoint = route.getWayPoints().get(1);
-      ymaps.geoObject.addon.balloon.get(gatesWayPoint);
+      ymaps.geoObject.addon.hint.get(gatesWayPoint);
       gatesWayPoint.options.set({
-        iconContentLayout: ymaps.templateLayoutFactory.createClass('Въезд под шлагбаум')
+        hintContentLayout: ymaps.templateLayoutFactory.createClass('Въезд под шлагбаум')
       });
 
       myMap.geoObjects.add(route).add(polyLine);
