@@ -8,6 +8,7 @@ gem 'unicorn'
 
 gem 'slim'
 gem 'sass'
+gem 'coffee-script'
 gem 'uglifier'
 
 gem 'sprite-factory'
