@@ -4,7 +4,7 @@ require './env'
 require 'sprite_factory'
 require 'pry'
 
-get '*' do
+get '/' do
   IO.write('public/index.html', slim(:app))
 
   views_public_dir = 'public/views'
