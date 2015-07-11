@@ -1,16 +1,19 @@
-getWindowHeight = ->
-  if typeof(window.innerWidth ) == 'number'
+getWindowSize = ->
+  if typeof(window.innerWidth) == 'number'
     #Non-IE
-    window.innerHeight
+    [window.innerWidth, window.innerHeight]
   else if document.documentElement && (document.documentElement.clientWidth || document.documentElement.clientHeight)
     #IE 6+ in 'standards compliant mode'
-    document.documentElement.clientHeight
+    [document.documentElement.clientWidth, document.documentElement.clientHeight]
   else if document.body && (document.body.clientWidth || document.body.clientHeight)
     #IE 4 compatible
-    document.body.clientHeight
+    [document.body.clientWidth, document.body.clientHeight]
 
 resizeMap = ->
-  document.getElementById('map').style.height = "#{ getWindowHeight() }px";
+  winSize = getWindowSize()
+  winW = winSize[0]
+  winH = winSize[1]
+  document.getElementById('map').style.height = "#{ winH }px";
 
 window.onresize = resizeMap;
 
@@ -53,12 +56,12 @@ window.onload = ->
     myMap = new ymaps.Map('map', {
       center: [53.907565, 27.526196],
       zoom: 16,
-      controls: ['zoomControl'],
       type: 'yandex#map'
     })
 
     myMap.geoObjects.add(mark)
     myMap.controls.add(new ymaps.control.TypeSelector(), { position: { top: 128, right: 20 } })
+    myMap.controls.add(new ymaps.control.ZoomControl(), { position: { top: 128, left: 20 } })
 
     ymaps.route([
       '53.90551627, 27.53785000',
