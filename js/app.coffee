@@ -4,7 +4,7 @@
   $locationProvider.html5Mode(enabled: true, requireBase: false)
   $routeProvider
   .when('/', templateUrl: 'views/home.html', controller: 'HomeCtrl')
-  .when('/about', templateUrl: 'views/about.html', controller: 'AboutCtrl')
+  .when('/price', templateUrl: 'views/price.html', controller: 'PriceCtrl')
   .when('/request', templateUrl: 'views/request.html', controller: 'RequestCtrl')
   .otherwise(redirectTo: '/')
 ])

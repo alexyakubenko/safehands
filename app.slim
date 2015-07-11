@@ -23,15 +23,16 @@ html
 
   body data-ng-app='safeHandsApp'
     #header data-ng-controller='HeaderCtrl'
-      #menu-header
-      #right-header
-        a.title href='/' {{ header }}
-        .contacts
-          .phone data-ng-repeat='contact in contacts'
-            a data-ng-href='{{ contact.vk_url }}' target='_blank' {{ contact.name }}
-            ':
-            a.number data-ng-href="{{ contact.phone | phoneLink }}" {{ contact.phone }}
-            .icon data-ng-class="'icon-' + contact.gsm"
+      a#title href='/' {{ header }}
+      #menu
+        a href='/' data-ng-class="{ 'active': isHomePage() }" Как добраться
+        a href='/price' data-ng-class="{ 'active': isPricePage() }" Цены
+      #contacts
+        .phone data-ng-repeat='contact in contacts'
+          a data-ng-href='{{ contact.vk_url }}' target='_blank' {{ contact.name }}
+          ':
+          a.number data-ng-href="{{ contact.phone | phoneLink }}" {{ contact.phone }}
+          .icon data-ng-class="'icon-' + contact.gsm"
     #content data-ng-view=''
     #map
 

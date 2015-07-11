@@ -4,6 +4,10 @@ body
   font-family: 'Open Sans', sans-serif
   font-weight: 400
   background-color: #fffef4
+  color: #fff
+  a
+    color: white
+    text-decoration: none
 
 #footer, #header
   width: 100%
@@ -12,41 +16,53 @@ body
     display: inline-block
 
 #header
-  #right-header
-    right: 0
-    z-index: 1
+  z-index: 1
+  position: absolute
+  background: rgba(0, 0, 0, 0.5)
+  height: 50px
+  #title
     position: absolute
-    background: rgba(0, 0, 0, 0.5)
-    padding: 10px 20px 15px 20px
+    left: 10px
+    font-size: 28px
+    line-height: 50px
 
-    border-radius: 0 0 0 10px
-    -webkit-border-radius: 0 0 0 10px
-    -moz-border-radius: 0 0 0 10px
+  #menu
+    a
+      letter-spacing: 3px
+      text-transform: uppercase
+      opacity: .6
+      height: 50px
+      line-height: 50px
+      font-size: 14px
+      margin: 0 21px
+      display: inline-block
+      vertical-align: top
+      transition: opacity .15s ease-in-out
+      &:hover
+        opacity: .8
+      &.active
+        opacity: 1
 
+  #contacts
+    position: absolute
+    right: 10px
+    top: 5px
     text-align: right
-    .title
-      font-size: 32px
-      text-decoration: none
-      color: #ffffff
-    .contacts
-      font-size: 12px
-      margin: 5px 0 0 0
-      .phone
-        margin: 1px 20px 1px 0
-        display: block
-        a
-          display: inline-block
-          color: #ffffff
-          text-decoration: none
-          &.number
-            font-size: 14px
-            font-weight: 300
-            margin: 0 0 0 5px
-          &:hover
-            text-decoration: underline
-        .icon
-          position: absolute
-          margin: 1px 0 0 4px
+    font-size: 12px
+    .phone
+      margin: 1px 20px 1px 0
+      display: block
+      a
+        display: inline-block
+        &.number
+          font-size: 14px
+          font-weight: 300
+          margin: 0 0 0 5px
+        &:hover
+          text-decoration: underline
+      .icon
+        position: absolute
+        margin: 1px 0 0 4px
 
 #content
   z-index: 1
@@ -58,14 +74,13 @@ body
     padding: 10px 20px 15px 20px
     border-radius: 10px
     box-sizing: border-box
-    color: white
 
 #footer
   bottom: 0
   background: rgba(0, 0, 0, 0.5)
   position: absolute
   z-index: 1
-  height: 60px
+  height: 50px
 
   #copy-rights
     position: absolute
@@ -76,16 +91,14 @@ body
     border-radius: 4px
     -webkit-border-radius: 4px
     -moz-border-radius: 4px
-    bottom: 6px
-    left: 6px
+    bottom: 5px
+    left: 10px
 
   #request-button
-    height: 40px
-    line-height: 40px
+    height: 32px
+    line-height: 32px
     background-color: #e74c3c
-    color: white
-    text-decoration: none
-    margin: 10px 0 0 0
+    margin: 9px 0 0 0
     padding: 0 25px
     font-size: 15px
     cursor: pointer
@@ -102,4 +115,5 @@ body
   #social-buttons
     position: absolute
     right: 10px
+    height: 40px
     bottom: 5px
