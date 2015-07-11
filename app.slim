@@ -23,6 +23,7 @@ html
 
   body data-ng-app='safeHandsApp'
     #header data-ng-controller='HeaderCtrl'
+      #menu-header
       #right-header
         a.title href='/' {{ header }}
         .contacts
@@ -34,9 +35,9 @@ html
     #content data-ng-view=''
     #map
 
-    #footer
+    #footer data-ng-controller='FooterCtrl'
       #copy-rights ООО «Надежные Руки» ©, 2015
-      #schedule-button ЗАПИСАТЬСЯ НА ШИНОМОНТАЖ
+      a#request-button href='/request' data-ng-hide="hideRequestButton()" ЗАПИСАТЬСЯ НА ШИНОМОНТАЖ
       #social-buttons
         a href='skype:safehandsby'
           .icon.icon-skype

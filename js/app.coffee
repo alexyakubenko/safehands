@@ -5,5 +5,6 @@
   $routeProvider
   .when('/', templateUrl: 'views/home.html', controller: 'HomeCtrl')
   .when('/about', templateUrl: 'views/about.html', controller: 'AboutCtrl')
+  .when('/request', templateUrl: 'views/request.html', controller: 'RequestCtrl')
   .otherwise(redirectTo: '/')
 ])

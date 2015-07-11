@@ -65,6 +65,7 @@ body
   background: rgba(0, 0, 0, 0.5)
   position: absolute
   z-index: 1
+  height: 60px
 
   #copy-rights
     position: absolute
@@ -78,27 +79,27 @@ body
     bottom: 6px
     left: 6px
 
-  #schedule-button
-    height: 43px
-    line-height: 44px
+  #request-button
+    height: 40px
+    line-height: 40px
     background-color: #e74c3c
-    margin: 8px 0
+    color: white
+    text-decoration: none
+    margin: 10px 0 0 0
     padding: 0 25px
     font-size: 15px
     cursor: pointer
     display: inline-block
-
     border: 1px solid transparent
-
     border-radius: 4px
     -webkit-border-radius: 4px
     -moz-border-radius: 4px
-
+    transition: background-color .15s ease-in-out
     &:hover
       background-color: #d62c1a
       border-color: #cd2a19
 
   #social-buttons
     position: absolute
-    right: 0
-    margin: -50px 10px 0 0
+    right: 10px
+    bottom: 5px
