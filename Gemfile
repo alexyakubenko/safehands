@@ -10,10 +10,10 @@ gem 'slim'
 gem 'sass'
 gem 'coffee-script'
 gem 'uglifier'
+gem 'bootstrap-sass'
 
 gem 'sprite-factory'
 gem 'chunky_png'
-
 
 group :development do
   gem 'capistrano', '~> 2.15.5'

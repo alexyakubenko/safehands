@@ -2,6 +2,7 @@
 
 require './env'
 require 'sprite_factory'
+require 'bootstrap-sass'
 #require 'pry'
 
 get '*' do
