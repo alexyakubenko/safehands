@@ -7,7 +7,8 @@ class PriceController
           legkovoi: { name: 'Легковое авто' }
           miniven: { name: 'Минивэн' },
           jeep: { name: 'Внедорожник' },
-          microavtobus: { name: 'Микроавтобус' }
+          microavtobus: { name: 'Микроавтобус' },
+          gruzovik: { name: 'Грузовой авто' }
         },
       },
       polirovka: {
@@ -21,7 +22,7 @@ class PriceController
       }
     }
 
-    $scope.active_service_key = $routeParams.service
-    $scope.active_car_key = $routeParams.car
+    $scope.active_service_key = $routeParams.service_key
+    $scope.active_car_key = $routeParams.car_key
 
 @SH.controller('PriceCtrl', ['$scope', '$routeParams', PriceController])

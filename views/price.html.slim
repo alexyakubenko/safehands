@@ -6,3 +6,5 @@
   .menu.cars data-ng-if='active_service_key'
     .btn-group
       a.car.btn.btn-default data-ng-repeat='(car_key, car_params) in prices[active_service_key].prices' href='/price/{{ active_service_key }}/{{ car_key }}' data-ng-class="active_car_key == car_key ? 'btn-primary' : 'btn-default'" {{ car_params.name }}
+
+  .content data-ng-if='active_car_key' data-ng-include="'views/price/' + active_service_key + '/' + active_car_key + '.html'"
