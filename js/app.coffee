@@ -5,6 +5,6 @@
   $routeProvider
   .when('/', templateUrl: 'views/home.html', controller: 'HomeCtrl')
   .when('/price/:service_key?/:car_key?', templateUrl: 'views/price.html', controller: 'PriceCtrl')
-  .when('/request', templateUrl: 'views/request.html', controller: 'RequestCtrl')
+  .when('/zapis', templateUrl: 'views/schedule.html', controller: 'ScheduleCtrl')
   .otherwise(redirectTo: '/')
 ])
