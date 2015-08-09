@@ -9,7 +9,7 @@ get '*' do
   views_public_dir = 'public/views'
 
   if !Dir.exist?(views_public_dir) || Socket.gethostname == 'Alexandrs-MacBook-Air.local'
-    Dir.glob("views/**/*.slim").each do |view_file_path|
+    Dir.glob('views/**/*.slim').each do |view_file_path|
       view_dir = File.join(views_public_dir, view_file_path.split('/')[1..-2])
       view_file = File.basename(view_file_path, '.slim')
       FileUtils.mkdir_p(view_dir) unless Dir.exist?(view_dir)
@@ -24,12 +24,18 @@ get '*' do
         'public/app.js',
         #Uglifier.compile(
             CoffeeScript.compile(
-                Dir.glob("js/**/*.coffee").map do |script_file_path|
+                Dir.glob('js/**/*.coffee').map do |script_file_path|
                   IO.read(script_file_path)
                 end.join("\n")
             )
         #)
     )
+
+    (Dir.glob('js/**/*.js') + Dir.glob('css/**/*.css')).map do |script_file_path|
+      js_dir = "public/#{ File.dirname(script_file_path) }"
+      FileUtils.mkdir_p(js_dir) unless Dir.exist?(js_dir)
+      FileUtils.cp(script_file_path, "public/#{ script_file_path }")
+    end
 
     SpriteFactory.run!(
         'icons',

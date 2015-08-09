@@ -1,4 +1,4 @@
-@SH = angular.module('safeHandsApp', ['ngRoute'])
+@SH = angular.module('safeHandsApp', ['ngRoute', 'ui.bootstrap.datetimepicker'])
 
 @SH.config(['$routeProvider', '$locationProvider', ($routeProvider, $locationProvider) ->
   $locationProvider.html5Mode(enabled: true, requireBase: false)
