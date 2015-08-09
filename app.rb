@@ -37,6 +37,10 @@ get '*' do
       FileUtils.cp(script_file_path, "public/#{ script_file_path }")
     end
 
+    phonts_dir = 'public/fonts'
+    FileUtils.mkdir_p(phonts_dir) unless Dir.exist?(phonts_dir)
+    FileUtils.copy_entry("#{ Bootstrap.assets_path }/fonts", phonts_dir)
+
     SpriteFactory.run!(
         'icons',
         library: :chunkypng,

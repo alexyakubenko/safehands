@@ -1,4 +1,5 @@
 #popup
   h1 Записаться на шиномонтаж
   .content
-    datetimepicker data-ng-model='data.date'
+    datetimepicker data-ng-model='date' data-before-render="beforeRender($view, $dates, $leftDate, $upDate, $rightDate)"
+
