@@ -16,7 +16,7 @@ resizeMap = ->
   document.getElementById('map').style.height = "#{ winH }px";
 
 window.onresize = resizeMap;
-if false
+if true
   window.onload = ->
     resizeMap()
 
