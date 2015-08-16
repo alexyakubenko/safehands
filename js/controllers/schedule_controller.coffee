@@ -9,11 +9,11 @@ class ScheduleController
   isPastTimeDate: (date, view) ->
     now = new Date
     viewStartValue = switch view
-      when 'year' then Date.UTC(now.getUTCFullYear(), 0, 0, 0, 0, 0)
-      when 'month' then Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), 0, 0, 0, 0)
-      when 'day' then Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(), 0, 0, 0)
-      when 'hour' then Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(), now.getUTCHours(), 0, 0)
-      when 'minute' then Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(), now.getUTCHours(), now.getUTCMinutes(), 0)
+      when 'year' then Date.UTC(now.getFullYear(), 0, 0, 0, 0, 0)
+      when 'month' then Date.UTC(now.getFullYear(), now.getMonth(), 0, 0, 0, 0)
+      when 'day' then Date.UTC(now.getFullYear(), now.getMonth(), now.getDate(), 0, 0, 0)
+      when 'hour' then Date.UTC(now.getFullYear(), now.getMonth(), now.getDate(), now.getHours(), 0, 0)
+      when 'minute' then Date.UTC(now.getFullYear(), now.getMonth(), now.getDate(), now.getHours(), now.getMinutes(), 0)
     date.utcDateValue < viewStartValue
 
 
