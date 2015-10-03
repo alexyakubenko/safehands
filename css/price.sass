@@ -22,3 +22,20 @@
             &:first-child
               text-align: left
               width: auto
+
+.mobile
+  #content
+    #popup.price
+      .menu
+        a
+          +box-sizing(border-box)
+          padding: 3px 0
+          width: 100%
+      .content
+        font-size: 12px
+        table
+          tr
+            td, th
+              padding: 2px 0
+              &:first-child
+                white-space: nowrap
