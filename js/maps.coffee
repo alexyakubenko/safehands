@@ -54,7 +54,7 @@ if true
       })
 
       myMap = new ymaps.Map('map', {
-        center: [53.907565, 27.526196],
+        center: [53.906805, 27.522741],
         zoom: 16,
         type: 'yandex#map'
       })
