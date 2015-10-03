@@ -19,7 +19,7 @@ get '*' do
 
     IO.write('public/index.html', slim(:app))
 
-    IO.write('public/app.css', sass(:app, style: :compressed))
+    IO.write('public/app.css', sass(:app))#, style: :compressed))
 
     IO.write(
         'public/app.js',

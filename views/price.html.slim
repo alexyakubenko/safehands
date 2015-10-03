@@ -1,7 +1,8 @@
 #popup.price
-  h1 Цены
+  h1
+    | {{ header() }}
   .menu.services
-    .btn-group
+    .btn-group data-ng-show='service_params.length > 1'
       a.service.btn data-ng-repeat='(service_key, service_params) in prices' href='/price/{{ service_key }}' data-ng-class="active_service_key == service_key ? 'btn-primary' : 'btn-default'" {{ service_params.name }}
   .menu.cars data-ng-if='active_service_key'
     .btn-group
