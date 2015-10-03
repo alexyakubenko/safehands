@@ -13,6 +13,9 @@ $brand-primary: #80807b
 @import bootstrap/_button-groups
 @import bootstrap/_glyphicons
 
+@import css/layout/header
+@import css/layout/footer
+
 @import css/price
 @import css/schedule
 
@@ -33,55 +36,6 @@ body
   .icon
     display: inline-block
 
-#header
-  z-index: 1
-  position: absolute
-  background: rgba(0, 0, 0, 0.5)
-  height: 50px
-  #title
-    position: absolute
-    left: 10px
-    font-size: 18px
-    line-height: 50px
-
-  #menu
-    a
-      letter-spacing: 3px
-      text-transform: uppercase
-      opacity: .6
-      height: 50px
-      line-height: 50px
-      font-size: 14px
-      margin: 0 21px
-      display: inline-block
-      vertical-align: top
-      transition: opacity .15s ease-in-out
-      &:hover
-        opacity: .8
-      &.active
-        opacity: 1
-
-  #contacts
-    position: absolute
-    right: 10px
-    top: 5px
-    text-align: right
-    font-size: 12px
-    .phone
-      margin: 1px 20px 1px 0
-      display: block
-      a
-        display: inline-block
-        &.number
-          font-size: 14px
-          font-weight: 300
-          margin: 0 0 0 5px
-        &:hover
-          text-decoration: underline
-      .icon
-        position: absolute
-        margin: 1px 0 0 4px
-
 #content
   z-index: 1
   position: absolute
@@ -96,46 +50,3 @@ body
       margin: 10px 0 5px 0
     .menu
       margin: 0 0 10px 0
-
-#footer
-  bottom: 0
-  background: rgba(0, 0, 0, 0.5)
-  position: absolute
-  z-index: 1
-  height: 50px
-
-  #copy-rights
-    position: absolute
-    font-size: 12px
-    background-color: rgba(0,0,0,0.5)
-    padding: 0 5px
-    line-height: 20px
-    border-radius: 4px
-    -webkit-border-radius: 4px
-    -moz-border-radius: 4px
-    bottom: 5px
-    left: 10px
-
-  #request-button
-    height: 32px
-    line-height: 32px
-    background-color: #e74c3c
-    margin: 9px 0 0 0
-    padding: 0 25px
-    font-size: 15px
-    cursor: pointer
-    display: inline-block
-    border: 1px solid transparent
-    border-radius: 4px
-    -webkit-border-radius: 4px
-    -moz-border-radius: 4px
-    transition: background-color .15s ease-in-out
-    &:hover
-      background-color: #d62c1a
-      border-color: #cd2a19
-
-  #social-buttons
-    position: absolute
-    right: 10px
-    height: 40px
-    bottom: 5px

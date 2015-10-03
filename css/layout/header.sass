@@ -1,0 +1,48 @@
+#header
+  z-index: 1
+  position: absolute
+  background: rgba(0, 0, 0, 0.5)
+  #title
+    float: left
+    margin: 0 0 0 10px
+    font-size: 18px
+    line-height: 50px
+
+  #menu
+    position: absolute
+    width: 100%
+    a
+      letter-spacing: 3px
+      text-transform: uppercase
+      opacity: .6
+      height: 50px
+      line-height: 50px
+      font-size: 14px
+      margin: 0 21px
+      display: inline-block
+      vertical-align: top
+      transition: opacity .15s ease-in-out
+      &:hover
+        opacity: .8
+      &.active
+        opacity: 1
+
+  #contacts
+    float: right
+    margin: 5px 10px 0 0
+    text-align: right
+    font-size: 12px
+    .phone
+      margin: 1px 20px 1px 0
+      display: block
+      a
+        display: inline-block
+        &.number
+          font-size: 14px
+          font-weight: 300
+          margin: 0 0 0 5px
+        &:hover
+          text-decoration: underline
+      .icon
+        position: absolute
+        margin: 1px 0 0 4px
