@@ -3,14 +3,12 @@
   position: absolute
   background: rgba(0, 0, 0, 0.5)
   #title
-    float: left
-    margin: 0 0 0 10px
+    position: absolute
+    left: 10px
     font-size: 18px
     line-height: 50px
 
   #menu
-    position: absolute
-    width: 100%
     a
       letter-spacing: 3px
       text-transform: uppercase
@@ -28,12 +26,13 @@
         opacity: 1
 
   #contacts
-    float: right
-    margin: 5px 10px 0 0
+    position: absolute
+    right: 10px
+    top: 6px
     text-align: right
     font-size: 12px
     .phone
-      margin: 1px 20px 1px 0
+      margin: 0 20px 0 0
       display: block
       a
         display: inline-block
@@ -46,3 +45,18 @@
       .icon
         position: absolute
         margin: 1px 0 0 4px
+
+.mobile
+  #header
+    #title
+      line-height: 30px
+      position: relative
+      left: inherit
+      font-size: 12px
+    #menu
+      a
+        height: 30px
+        line-height: 30px
+    #contacts
+      position: relative
+      top: inherit

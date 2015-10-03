@@ -3,7 +3,6 @@
   background: rgba(0, 0, 0, 0.5)
   position: absolute
   z-index: 1
-  height: 50px
 
   #copy-rights
     position: absolute
@@ -36,7 +35,14 @@
       border-color: #cd2a19
 
   #social-buttons
-    position: absolute
-    right: 10px
+    float: right
+    margin: 5px 10px 5px 0
     height: 40px
-    bottom: 5px
+
+.mobile
+  #footer
+    #copy-rights
+      display: none
+    #social-buttons
+      float: none
+      margin: inherit

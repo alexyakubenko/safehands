@@ -1,4 +1,4 @@
-getWindowSize = ->
+window.getWindowSize = ->
   if typeof(window.innerWidth) == 'number'
     #Non-IE
     [window.innerWidth, window.innerHeight]
@@ -10,7 +10,7 @@ getWindowSize = ->
     [document.body.clientWidth, document.body.clientHeight]
 
 resizeMap = ->
-  winSize = getWindowSize()
+  winSize = window.getWindowSize()
   winW = winSize[0]
   winH = winSize[1]
   document.getElementById('map').style.height = "#{ winH }px";
