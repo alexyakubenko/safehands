@@ -3,12 +3,13 @@
 require './env'
 require 'sprite_factory'
 require 'bootstrap-sass'
+require 'socket'
 #require 'pry'
 
 get '*' do
   views_public_dir = 'public/views'
 
-  if !Dir.exist?(views_public_dir) || Socket.gethostname == 'Alexandrs-MacBook-Air.local'
+  if !Dir.exist?(views_public_dir) || local?
     Dir.glob('views/**/*.slim').each do |view_file_path|
       view_dir = File.join(views_public_dir, view_file_path.split('/')[1..-2])
       view_file = File.basename(view_file_path, '.slim')
@@ -54,4 +55,10 @@ get '*' do
   end
 
   IO.read('public/index.html')
+end
+
+helpers do
+  def local?
+    Socket.gethostname == 'Alexandrs-MacBook-Pro.local'
+  end
 end
