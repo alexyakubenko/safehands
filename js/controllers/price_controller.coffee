@@ -8,16 +8,15 @@ class PriceController
           medium: { name: 'Внедорожник / Микроавтобус' },
           heavy: { name: 'Грузовой авто' }
         },
-      }#,
-#      polirovka: {
-#        name: 'Полировка',
-#        prices: {
-#          legkovoi: { name: 'Легковое авто' }
-#          miniven: { name: 'Минивэн' },
-#          jeep: { name: 'Внедорожник' },
-#          microavtobus: { name: 'Микроавтобус' }
-#        }
-#      }
+      },
+      repair: {
+        name: 'ремонт шин',
+        prices: {
+          light: { name: 'Легковый шины' }
+          heavy: { name: 'Грузовые шины' },
+          special: { name: 'Сельскохозяйственная техника' },
+        }
+      }
     }
 
     $scope.active_service_key = $routeParams.service_key

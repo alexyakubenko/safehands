@@ -13,7 +13,6 @@
       letter-spacing: 3px
       text-transform: uppercase
       opacity: .6
-      height: 50px
       line-height: 50px
       font-size: 14px
       padding: 0 20px
@@ -49,16 +48,23 @@
 .mobile
   #header
     #title
-      line-height: 20px
+      line-height: 30px
       position: relative
-      left: inherit
+      left: 10px
       font-size: 12px
+      float: left
     #menu
+      clear: both
       a
-        line-height: 50px
+        line-height: 30px
+        display: block
+        padding: 0
     #contacts
-      position: relative
-      top: inherit
-      right: inherit
-      width: 230px
-      margin: 0 auto 5px auto
+      font-size: 10px
+      top: 1px
+      .phone
+        margin: 0
+        .number
+          font-size: 10px
+        .icon
+          display: none

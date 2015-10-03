@@ -9,7 +9,10 @@ class HeaderController
     $scope.isHomePage = ->
       window.location.pathname == '/'
 
-    $scope.isPricePage = ->
-      window.location.pathname.indexOf('/price') is 0
+    $scope.isTirePage = ->
+      window.location.pathname.indexOf('/price/tires') is 0
+
+    $scope.isRepairPage = ->
+      window.location.pathname.indexOf('/price/repair') is 0
 
 @SH.controller('HeaderCtrl', ['$scope', HeaderController])
