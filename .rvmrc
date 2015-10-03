@@ -1,1 +1,1 @@
-rvm use ruby-head@safehands
+rvm use ruby-head@safehands --create
