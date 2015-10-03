@@ -12,9 +12,9 @@ class PriceController
       repair: {
         name: 'ремонт шин',
         prices: {
-          light: { name: 'Легковый шины' }
-          heavy: { name: 'Грузовые шины' },
-          special: { name: 'Сельскохозяйственная техника' },
+          light: { name: 'Легковые шины' }
+          #heavy: { name: 'Грузовые шины' },
+          #special: { name: 'Сельскохозяйственная техника' },
         }
       }
     }
