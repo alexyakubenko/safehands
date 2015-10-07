@@ -25,7 +25,7 @@ get '*' do
         'public/app.js',
         Uglifier.compile(
             CoffeeScript.compile(
-                Dir.glob('js/**/*.coffee').map do |script_file_path|
+                Dir.glob('js/**/*.coffee').sort.map do |script_file_path|
                   IO.read(script_file_path)
                 end.join("\n")
             )
