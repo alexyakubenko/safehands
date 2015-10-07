@@ -39,7 +39,7 @@ html
       #menu
         a href='/' data-ng-class="{ 'active': isHomePage() }" Наше расположение
         a href='/price/tires/light' data-ng-class="{ 'active': isTirePage() }" Шиномонтаж
-        a href='/price/repair/light' data-ng-class="{ 'active': isRepairPage() }" Ремонт шин
+        a href='/price/repair/light' data-ng-class="{ 'active': isRepairPage() }" Ремонт колес
       #contacts
         .phone data-ng-repeat='contact in contacts'
           a data-ng-href='{{ contact.vk_url }}' target='_blank' {{ contact.name }}
@@ -55,7 +55,7 @@ html
       #social-buttons
         a href='skype:safehandsby'
           .icon.icon-skype
-        a href='mailto:m@safehands.by'
+        a href='mailto:mail@safehands.by'
           .icon.icon-mail
         a href='https://vk.com/safehandsby' target='_blank'
           .icon.icon-vk
