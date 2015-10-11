@@ -6,15 +6,16 @@ class PriceController
         prices: {
           light: { name: 'Легковое авто / Минивэн' }
           medium: { name: 'Внедорожник / Микроавтобус' },
-          heavy: { name: 'Грузовой авто' }
+          heavy: { name: 'Грузовой авто' },
+          special: { name: 'Сельхозтехника' }
         },
       },
       repair: {
         name: 'ремонт шин',
         prices: {
           light: { name: 'Легковые шины' }
-          #heavy: { name: 'Грузовые шины' },
-          #special: { name: 'Сельскохозяйственная техника' },
+          heavy: { name: 'Грузовые шины' },
+          special: { name: 'Шины от сельхозтехники' },
         }
       }
     }

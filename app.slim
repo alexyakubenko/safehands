@@ -39,7 +39,7 @@ html
       #menu
         a href='/' data-ng-class="{ 'active': isHomePage() }" Наше расположение
         a href='/price/tires/light' data-ng-class="{ 'active': isTirePage() }" Шиномонтаж
-        a href='/price/repair/light' data-ng-class="{ 'active': isRepairPage() }" Ремонт колес
+        a href='/price/repair/light' data-ng-class="{ 'active': isRepairPage() }" Ремонт шин
       #contacts
         .phone data-ng-repeat='contact in contacts'
           a data-ng-href='{{ contact.vk_url }}' target='_blank' {{ contact.name }}
