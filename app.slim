@@ -59,3 +59,6 @@ html
           .icon.icon-mail
         a href='https://vk.com/safehandsby' target='_blank'
           .icon.icon-vk
+
+      - unless local?
+        = erb :'views/_yandex_metrica'

@@ -10,8 +10,8 @@ get '*' do
   views_public_dir = 'public/views'
 
   if !Dir.exist?(views_public_dir) || local?
-    Dir.glob('views/**/*.slim').each do |view_file_path|
-      view_dir = File.join(views_public_dir, view_file_path.split('/')[1..-2])
+    Dir.glob('views/templates/**/*.slim').each do |view_file_path|
+      view_dir = File.join(views_public_dir, view_file_path.split('/')[1..-3])
       view_file = File.basename(view_file_path, '.slim')
       FileUtils.mkdir_p(view_dir) unless Dir.exist?(view_dir)
       IO.write(File.join(view_dir, view_file), Slim::Template.new(view_file_path).render(self))
