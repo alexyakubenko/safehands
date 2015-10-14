@@ -34,6 +34,7 @@ get '*' do
 
     (Dir.glob('js/**/*.js') + Dir.glob('css/**/*.css')).map do |script_file_path|
       js_dir = "public/#{ File.dirname(script_file_path) }"
+
       FileUtils.mkdir_p(js_dir) unless Dir.exist?(js_dir)
       FileUtils.cp(script_file_path, "public/#{ script_file_path }")
     end

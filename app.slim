@@ -1,9 +1,10 @@
 doctype html
-html
-  head
+html data-ng-app='safeHandsApp'
+  head data-ng-controller='HeadCtrl'
     base href='/'
-    title СТО Надежные Руки
-    meta name='keywords' content='шиномонтаж, сто, то, шины, полировка, химчистка, надежные руки'
+    title
+      | {{ headTitle() }}
+    meta name='keywords' content='шиномонтаж, грузовой шиномонтаж, минск, центр минска, кальварийская, харьковская, ремонт шин, вулканизация, нарезка протектора, сто, полировка, покраска, беларусь, разумные цены, надежные руки, ремонт проколов, покрышки, купить шины'
     meta name='author' content='Alex Yakubenko'
     meta name='description' content='ООО Надежные Руки'
     meta name='viewport' content='width=device-width, initial-scale=1.0'
@@ -33,9 +34,9 @@ html
     script src='/js/vendor/moment-with-locales.min.js' type='text/javascript'
     script src='/js/vendor/datetimepicker.js' type='text/javascript'
 
-  body data-ng-app='safeHandsApp' data-ng-class="{ 'mobile': narrowWidth() }" data-ng-controller='ApplicationCtrl'
+  body data-ng-class="{ 'mobile': narrowWidth() }" data-ng-controller='ApplicationCtrl'
     #header data-ng-controller='HeaderCtrl'
-      a#title href='/' {{ header }}
+      a#title href='/' «Надежные Руки»
       #menu
         a href='/' data-ng-class="{ 'active': isHomePage() }" Наше расположение
         a href='/price/tires/light' data-ng-class="{ 'active': isTirePage() }" Шиномонтаж
