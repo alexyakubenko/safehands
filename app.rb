@@ -21,16 +21,15 @@ get '*' do
 
     IO.write('public/app.css', sass(:app, style: :compressed))
 
-    IO.write(
-        'public/app.js',
-        Uglifier.compile(
-            CoffeeScript.compile(
-                Dir.glob('js/**/*.coffee').sort.map do |script_file_path|
-                  IO.read(script_file_path)
-                end.join("\n")
-            )
-        )
+    app_js_content = CoffeeScript.compile(
+        Dir.glob('js/**/*.coffee').sort.map do |script_file_path|
+          IO.read(script_file_path)
+        end.join("\n")
     )
+
+    app_js_content = Uglifier.compile(app_js_content) unless local?
+
+    IO.write('public/app.js', app_js_content)
 
     (Dir.glob('js/**/*.js') + Dir.glob('css/**/*.css')).map do |script_file_path|
       js_dir = "public/#{ File.dirname(script_file_path) }"

@@ -1,5 +1,5 @@
 class HeadController
   constructor: ($scope, HeadService) ->
-    $scope.headTitle = -> HeadService.getTitle()
+    $scope.title = -> HeadService.getTitle()
 
 @SH.controller('HeadCtrl', ['$scope', 'HeadService', HeadController])
