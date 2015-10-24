@@ -1,12 +1,43 @@
 #content
   #popup.schedule
     height: 330px
+    width: 550px
     .content
+      margin: 5px 0 0 0
       .datetimepicker
         margin: 0 auto
         display: inline-block
         table
           width: 100%
-      .confirm-form
-        vertical-align: top
-        display: inline-block
+          tr
+            th
+              &:hover
+                color: gray
+              &.switch
+                white-space: nowrap
+            td
+              &.day:hover
+                color: gray
+              span:hover
+                color: gray
+
+        .confirm-header
+          margin: 0 10px 0 0
+          font-weight: 300
+        form.confirm-form
+          margin: 5px 0 0 0
+          input
+            +box-sizing(border-box)
+            height: 38px
+          button
+            font-size: 16px
+            color: white
+            &:focus, &:hover
+              color: white
+
+.mobile
+  #content
+    #popup.schedule
+      width: auto
+      .datetimepicker
+        width: 100%

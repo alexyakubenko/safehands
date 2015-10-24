@@ -8,10 +8,13 @@ $brand-primary: #80807b
 @import bootstrap/mixins/_buttons
 @import bootstrap/mixins/_tab-focus
 @import bootstrap/mixins/_opacity
+@import bootstrap/mixins/_forms
+@import bootstrap/mixins/_grid
 
 @import bootstrap/_buttons
 @import bootstrap/_button-groups
 @import bootstrap/_glyphicons
+@import bootstrap/_forms
 
 @import css/layout/header
 @import css/layout/content
@@ -36,3 +39,12 @@ body
   color: #ffffff
   .icon
     display: inline-block
+
+.btn-red
+  transition: background-color .15s ease-in-out
+  background-color: #e74c3c
+  &:hover
+    background-color: #d62c1a
+    border-color: #cd2a19
+.nowrap
+  white-space: nowrap

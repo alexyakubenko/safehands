@@ -21,9 +21,11 @@ html data-ng-app='safeHandsApp'
 
     - if local?
       script src='/js/vendor/angular.js' type='text/javascript'
+      //script src='/js/vendor/angular-sanitize.js' type='text/javascript'
       script src='/js/vendor/angular-route.js' type='text/javascript'
     - else
       script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js' type='text/javascript'
+      //script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-sanitize.min.js' type='text/javascript'
       script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-route.min.js' type='text/javascript'
 
     /script src='/js/vendor/angular.min.js' type='text/javascript'
@@ -52,7 +54,7 @@ html data-ng-app='safeHandsApp'
 
     #footer data-ng-controller='FooterCtrl'
       #copy-rights ООО «Надежные Руки» ©, 2015
-      a#request-button href='/schedule' data-ng-hide="hideScheduleButton()" ЗАПИСАТЬСЯ НА ШИНОМОНТАЖ
+      a#request-button.btn-red href='/schedule' data-ng-hide="hideScheduleButton()" ЗАПИСАТЬСЯ НА ШИНОМОНТАЖ
       #social-buttons
         a href='skype:safehandsby'
           .icon.icon-skype
