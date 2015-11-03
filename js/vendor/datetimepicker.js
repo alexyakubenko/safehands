@@ -277,11 +277,12 @@
               var selectedDate = moment.utc(unixDate).startOf('minute');
               var previousViewDate = moment.utc(selectedDate).startOf('hour');
 
-              var result = {
-                'previousView': 'minute',
-                'currentView': 'confirm',
-                'nextView': 'schedule',
-                'previousViewDate': new DateObject({
+              return {
+                previousView: 'minute',
+                currentView: 'confirm',
+                nextView: 'schedule',
+                utc_date_value: selectedDate.valueOf(),
+                previousViewDate: new DateObject({
                   utcDateValue: previousViewDate.valueOf(),
                   display: selectedDate.format('lll')
                 })//,
@@ -290,7 +291,7 @@
                 //'dates': []
               };
 
-              return result;
+              //return result;
             },
 
             setTime: function setTime(unixDate) {

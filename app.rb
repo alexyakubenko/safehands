@@ -4,7 +4,15 @@ require './env'
 require 'sprite_factory'
 require 'bootstrap-sass'
 require 'socket'
-#require 'pry'
+require 'pry'
+
+post '/schedule' do
+  content_type :json
+
+  params_hash = JSON.parse(request.body.read)
+
+  { time_stamp: Time.at(params_hash['time_stamp'].to_s.first(10).to_i).in_time_zone('GMT').inspect }.to_json
+end
 
 get '*' do
   views_public_dir = 'public/views'

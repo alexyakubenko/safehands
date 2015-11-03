@@ -16,5 +16,4 @@ class ScheduleController
       when 'minute' then Date.UTC(now.getFullYear(), now.getMonth(), now.getDate(), now.getHours(), now.getMinutes(), 0)
     date.utcDateValue < viewStartValue
 
-
 @SH.controller('ScheduleCtrl', ['$scope', ScheduleController])

@@ -1,9 +1,9 @@
-form.confirm-form
+form.confirm-form data-ng-submit='confirm()' data-ng-controller='ConfirmScheduleCtrl'
   .form-group
-    input type='text' name='name' class='form-control' placeholder='Имя'
+    input type='text' name='name' class='form-control' placeholder='Имя' data-ng-model='name' required='true'
   .form-group
-    input type='tel' name='tel' class='form-control'  placeholder='Нормер телефона'
+    input type='tel' name='tel' class='form-control'  placeholder='Нормер телефона' data-ng-model='phone'
   .form-group
-    input type='email' name='email' class='form-control'  placeholder='Адрес электронной почты'
+    input type='email' name='email' class='form-control'  placeholder='Адрес электронной почты' data-ng-model='email'
 
   button.btn.btn-red.btn-block type='submit' Подтвердить запись
