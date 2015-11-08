@@ -1,4 +1,6 @@
 require 'sinatra'
+require 'active_record'
+require './models/reservation'
 
 set :views, './'
 

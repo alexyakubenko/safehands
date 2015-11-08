@@ -9,9 +9,17 @@ require 'pry'
 post '/schedule' do
   content_type :json
 
-  params_hash = JSON.parse(request.body.read)
+  params = JSON.parse(request.body.read).symbolize_keys
+  time = Time.at(params[:time_stamp].to_s.first(10).to_i).in_time_zone('GMT')
 
-  { time_stamp: Time.at(params_hash['time_stamp'].to_s.first(10).to_i).in_time_zone('GMT').inspect }.to_json
+  reservation = Reservation.new(
+      time: time,
+      name: params[:name],
+      phone: params[:phone],
+      email: params[:email]
+  )
+
+  { success: !!reservation.save }.to_json
 end
 
 get '*' do
