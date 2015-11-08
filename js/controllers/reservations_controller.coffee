@@ -3,12 +3,13 @@ class ReservationsController
     moment.locale 'ru'
 
     $scope.beforeRender = ($view, $dates, $currDate, $leftDate, $upDate, $rightDate) =>
-      for date in $dates
-        date.selectable = false if date.past || @isPastTimeDate(date, $view)
-
-      $http.get("/reservations/#{ $view }/#{ $currDate.utcDateValue + 60 * 60 * 1000 }").then (response) ->
+      if $view != 'confirm'
         for date in $dates
-          date.selectable = false if date.utcDateValue in response.data.reservations
+          date.selectable = false if date.past || @isPastTimeDate(date, $view)
+
+        $http.get("/reservations/#{ $view }/#{ $currDate.utcDateValue + 60 * 60 * 1000 }").then (response) ->
+          for date in $dates
+            date.selectable = false if date.utcDateValue in response.data.reservations
 
   isPastTimeDate: (date, view) ->
     now = new Date

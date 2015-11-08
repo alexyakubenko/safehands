@@ -14,7 +14,7 @@ class SmsNotification < ActiveRecord::Base
 
     response = Net::HTTP.post_form(
         URI("https://#{ twilio_credentials['account_sid'] }:#{ twilio_credentials['auth_token'] }@api.twilio.com/2010-04-01/Accounts/#{ twilio_credentials['account_sid'] }/Messages.json"),
-        From: '+19177914257',
+        From: (Router.local? ? '+15005550006' : '+19177914257'),
         To: '+375298708995',
         Body: reservation.text_sms,
         StatusCallback: Router.sms_notification_report_url(self.id)
