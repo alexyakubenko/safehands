@@ -3,7 +3,7 @@ class ConfirmReservationController
     $scope.confirm = ->
       $http.post(
         '/reservation',
-          time_stamp: $scope.data.utc_date_value,
+          time: $scope.data.utc_date_value,
           name: $scope.name,
           phone: $scope.phone,
           email: $scope.email

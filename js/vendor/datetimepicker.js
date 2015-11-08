@@ -337,14 +337,10 @@
                 }
               }
 
-              if (viewName == 'minute') {
-                debugger;
-              }
-
               scope.beforeRender({
                 $view: result.currentView,
                 $dates: result.dates || weekDates,
-                $currDate: dateObject.utcDateValue,
+                $currDate: dateObject,
                 $leftDate: result.leftDate,
                 $upDate: result.previousViewDate,
                 $rightDate: result.rightDate

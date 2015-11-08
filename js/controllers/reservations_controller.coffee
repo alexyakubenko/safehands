@@ -6,9 +6,9 @@ class ReservationsController
       for date in $dates
         date.selectable = false if date.past || @isPastTimeDate(date, $view)
 
-      debugger if $view is 'minute'
-
-      $http.get("/reservations/#{ $view }/#{ $currDate }").then (response) ->
+      $http.get("/reservations/#{ $view }/#{ $currDate.utcDateValue + 60 * 60 * 1000 }").then (response) ->
+        for date in $dates
+          date.selectable = false if date.utcDateValue in response.data.reservations
 
   isPastTimeDate: (date, view) ->
     now = new Date
