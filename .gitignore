@@ -7,3 +7,4 @@ public
 safehands.pem
 
 config/database.yml
+config/twilio.yml

@@ -1,10 +1,4 @@
 class Reservation < ActiveRecord::Base
-  GOOGLE_SYNC_STATUSES = [
-      queued: 0,
-      synced: 1,
-      failed: 3
-  ]
-
   QUEUED = 0
   SERVED = 1
   MISSED = 2
@@ -18,13 +12,27 @@ class Reservation < ActiveRecord::Base
   validates_uniqueness_of :time
 
   validates_inclusion_of :status, in: STATUSES.keys
-  validates_inclusion_of :google_sync_status, in: GOOGLE_SYNC_STATUSES.keys
 
-  after_create :send_reservation_notification
+  after_create :send_email_notification
+  after_create :send_sms_notification
+
+  has_many :sms_notifications
+
+  def text_sms
+    %{
+    Запись #{ self.time.strftime("%D %T") }.
+    #{ " #{ self.phone }" if self.phone? }
+    #{ "(#{ self.name })" if self.name? }
+    }.squish
+  end
 
   private
 
-  def send_reservation_notification
-    
+  def send_email_notification
+
+  end
+
+  def send_sms_notification
+    sms_notifications.create
   end
 end

@@ -9,18 +9,26 @@ require 'pry'
 post '/schedule' do
   content_type :json
 
-  params = JSON.parse(request.body.read).symbolize_keys
-  time = Time.at(params[:time_stamp].to_s.first(10).to_i).in_time_zone('GMT')
+  time = Time.at(body_params[:time_stamp].to_s.first(10).to_i).in_time_zone('GMT')
 
   reservation = Reservation.new(
       time: time,
-      name: params[:name],
-      phone: params[:phone],
-      email: params[:email]
+      name: body_params[:name],
+      phone: body_params[:phone],
+      email: body_params[:email]
   )
 
   { success: !!reservation.save }.to_json
 end
+
+post '/sms_notification_report/:id' do
+  binding.pry
+
+  SMSNotification.find(params[:id]).sms_notification_reports.create(params: body_params)
+
+  status 200
+end
+
 
 get '*' do
   views_public_dir = 'public/views'
@@ -73,8 +81,12 @@ get '*' do
   IO.read('public/index.html')
 end
 
+def body_params
+  @body_params ||= JSON.parse(request.body.read).symbolize_keys
+end
+
 helpers do
   def local?
-    Socket.gethostname == 'Alexandrs-MacBook-Pro.local'
+    Router.local?
   end
 end

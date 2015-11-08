@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151108155325) do
+ActiveRecord::Schema.define(version: 20151108181621) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,7 +21,21 @@ ActiveRecord::Schema.define(version: 20151108155325) do
     t.string   "phone"
     t.string   "email"
     t.datetime "time"
-    t.integer  "google_sync_status", default: 0, null: false
+    t.integer  "status",     default: 0, null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "sms_notification_reports", force: :cascade do |t|
+    t.text     "params"
+    t.integer  "sms_notification_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "sms_notifications", force: :cascade do |t|
+    t.text     "response_body"
+    t.integer  "reservation_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

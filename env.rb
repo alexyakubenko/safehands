@@ -1,6 +1,8 @@
 require 'sinatra'
 require 'active_record'
-require './models/reservation'
+
+Dir['lib/**/*.rb'].each { |model_file| require "./#{ model_file }" }
+Dir['models/**/*.rb'].each { |model_file| require "./#{ model_file }" }
 
 set :views, './'
 
