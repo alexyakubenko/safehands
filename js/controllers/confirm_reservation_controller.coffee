@@ -1,8 +1,8 @@
-class ConfirmScheduleController
+class ConfirmReservationController
   constructor: ($scope, $http) ->
     $scope.confirm = ->
       $http.post(
-        '/schedule',
+        '/reservation',
           time_stamp: $scope.data.utc_date_value,
           name: $scope.name,
           phone: $scope.phone,
@@ -10,4 +10,4 @@ class ConfirmScheduleController
       ).then (response) ->
         console.log(response.data)
 
-@SH.controller('ConfirmScheduleCtrl', ['$scope', '$http', ConfirmScheduleController])
+@SH.controller('ConfirmReservationCtrl', ['$scope', '$http', ConfirmReservationController])

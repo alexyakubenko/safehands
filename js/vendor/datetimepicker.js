@@ -134,7 +134,7 @@
         '       </tr>' +
         '       <tr data-ng-if="data.currentView === \'confirm\'" >' +
         '           <td colspan="7" >' +
-        '               <div data-ng-include="\'views/schedule_form.html\'"></div>' +
+        '               <div data-ng-include="\'views/reservation_form.html\'"></div>' +
         '           </td>' +
         '       </tr>' +
         '   </tbody>' +
@@ -245,16 +245,17 @@
               var activeFormat = ngModelController.$modelValue ? moment(ngModelController.$modelValue).format('YYYY-MM-DD H:mm') : '';
 
               var result = {
-                'previousView': 'hour',
-                'currentView': 'minute',
-                'nextView': 'confirm',
-                'previousViewDate': new DateObject({
+                previousView: 'hour',
+                currentView: 'minute',
+                nextView: 'confirm',
+                previousViewDate: new DateObject({
                   utcDateValue: previousViewDate.valueOf(),
                   display: selectedDate.format('lll')
                 }),
-                'leftDate': new DateObject({utcDateValue: moment.utc(selectedDate).subtract(1, 'hours').valueOf()}),
-                'rightDate': new DateObject({utcDateValue: moment.utc(selectedDate).add(1, 'hours').valueOf()}),
-                'dates': []
+                leftDate: new DateObject({utcDateValue: moment.utc(selectedDate).subtract(1, 'hours').valueOf()}),
+                rightDate: new DateObject({utcDateValue: moment.utc(selectedDate).add(1, 'hours').valueOf()}),
+                selectedDate: unixDate,
+                dates: []
               };
 
               var limit = 60 / configuration.minuteStep;
@@ -336,9 +337,14 @@
                 }
               }
 
+              if (viewName == 'minute') {
+                debugger;
+              }
+
               scope.beforeRender({
                 $view: result.currentView,
                 $dates: result.dates || weekDates,
+                $currDate: dateObject.utcDateValue,
                 $leftDate: result.leftDate,
                 $upDate: result.previousViewDate,
                 $rightDate: result.rightDate

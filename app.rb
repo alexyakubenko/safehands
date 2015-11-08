@@ -6,9 +6,11 @@ require 'bootstrap-sass'
 require 'socket'
 require 'pry'
 
-post '/schedule' do
+before do
   content_type :json
+end
 
+post '/reservation' do
   time = Time.at(body_params[:time_stamp].to_s.first(10).to_i).in_time_zone('GMT')
 
   reservation = Reservation.new(
@@ -21,6 +23,18 @@ post '/schedule' do
   { success: !!reservation.save }.to_json
 end
 
+get '/reservations/:view/:time' do
+  time = Time.at(params[:time].to_s.first(10).to_i).in_time_zone('GMT')
+
+  if params[:view] == 'minute'
+    times = Reservation.where(time: time.beginning_of_hour..time.end_of_hour).pluck(:time)
+    reservation_time_stamps = times.map { |t| "#{ t.to_i }000" }
+
+    { reservations: reservation_time_stamps }.to_json
+  end
+  { reservations: [] }.to_json
+end
+
 post '/sms_notification_report/:id' do
   binding.pry
 
@@ -29,8 +43,9 @@ post '/sms_notification_report/:id' do
   status 200
 end
 
-
 get '*' do
+  content_type :html
+
   views_public_dir = 'public/views'
 
   if !Dir.exist?(views_public_dir) || local?

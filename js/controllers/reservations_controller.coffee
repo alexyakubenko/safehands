@@ -1,10 +1,14 @@
-class ScheduleController
-  constructor: ($scope) ->
+class ReservationsController
+  constructor: ($scope, $http) ->
     moment.locale 'ru'
 
-    $scope.beforeRender = ($view, $dates, $leftDate, $upDate, $rightDate) =>
+    $scope.beforeRender = ($view, $dates, $currDate, $leftDate, $upDate, $rightDate) =>
       for date in $dates
         date.selectable = false if date.past || @isPastTimeDate(date, $view)
+
+      debugger if $view is 'minute'
+
+      $http.get("/reservations/#{ $view }/#{ $currDate }").then (response) ->
 
   isPastTimeDate: (date, view) ->
     now = new Date
@@ -16,4 +20,4 @@ class ScheduleController
       when 'minute' then Date.UTC(now.getFullYear(), now.getMonth(), now.getDate(), now.getHours(), now.getMinutes(), 0)
     date.utcDateValue < viewStartValue
 
-@SH.controller('ScheduleCtrl', ['$scope', ScheduleController])
+@SH.controller('ReservationsCtrl', ['$scope', '$http', ReservationsController])
