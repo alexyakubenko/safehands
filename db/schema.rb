@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20151108155325) do
     t.string   "phone"
     t.string   "email"
     t.datetime "time"
+    t.integer  "google_sync_status", default: 0, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
