@@ -281,7 +281,7 @@
               return {
                 previousView: 'minute',
                 currentView: 'confirm',
-                nextView: 'schedule',
+                nextView: 'sucess',
                 utc_date_value: selectedDate.valueOf(),
                 previousViewDate: new DateObject({
                   utcDateValue: previousViewDate.valueOf(),
