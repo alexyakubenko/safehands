@@ -1,5 +1,5 @@
 class FooterController
-  constructor: ($scope) ->
-    $scope.hideReservationButton = -> window.location.pathname == '/reservation'
+  constructor: ($scope, AuthService) ->
+    $scope.hideReservationButton = -> window.location.pathname == '/reservation' or AuthService.hasReservation()
 
-@SH.controller('FooterCtrl', ['$scope', FooterController])
+@SH.controller('FooterCtrl', ['$scope', 'AuthService', FooterController])

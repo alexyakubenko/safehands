@@ -10,7 +10,7 @@ require 'pry'
 before do
   content_type :json
 end
-
+=begin
 map '/sidekiq' do
   use Rack::Auth::Basic, "Protected Area" do |username, password|
     username == 'sidekiq' && password == 'sidekiq'
@@ -18,7 +18,7 @@ map '/sidekiq' do
 
   run Sidekiq::Web
 end
-
+=end
 post '/reservation' do
   time = Time.at(body_params[:time].to_s.first(10).to_i).in_time_zone('UTC')
 
@@ -35,14 +35,18 @@ end
 get '/reservations/:view/:time' do
   time = Time.at(params[:time].to_s.first(10).to_i).in_time_zone('UTC')
 
-  if params[:view] == 'minute'
-    times = Reservation.where(time: time.beginning_of_hour..time.end_of_hour).pluck(:time)
-    reservation_time_stamps = times.map { |t| "#{ t.to_i }000".to_i }
+  reservation_times = case params[:view]
+                        when 'hour'
+                          real_time = time + 1.day
+                          times = Reservation.where(time: real_time.beginning_of_day..real_time.end_of_day).pluck(:time)
+                          times.select { |x| x.min.zero? && times.select { |y| y >= x && y <= x + 1.hour  }.size >= 4 }
+                        when 'minute'
+                          Reservation.where(time: time.beginning_of_hour..time.end_of_hour).pluck(:time)
+                        else
+                          []
+                      end
 
-    { reservations: reservation_time_stamps }.to_json
-  else
-    { reservations: [] }.to_json
-  end
+  { reservations: reservation_times.map { |t| "#{ t.to_i }000".to_i } }.to_json
 end
 
 post '/sms_notification_report/:id' do

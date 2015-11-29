@@ -1,9 +1,11 @@
-form.confirm-form data-ng-submit='confirm()' data-ng-controller='ConfirmReservationCtrl'
-  .form-group
-    input type='text' name='name' class='form-control' placeholder='Имя' data-ng-model='name' required='true'
-  .form-group
-    input type='tel' name='tel' class='form-control'  placeholder='Нормер телефона' data-ng-model='phone'
-  .form-group
-    input type='email' name='email' class='form-control'  placeholder='Адрес электронной почты' data-ng-model='email'
+div data-ng-controller='ConfirmReservationCtrl'
+  form.confirm-form data-ng-submit='confirm()' data-ng-if='!success'
+    .form-group
+      input.form-control type='text'  name='name'  data-ng-model='user.name' placeholder='Имя' required='true'
+    .form-group
+      input.form-control type='tel'   name='tel'   data-ng-model='user.phone' placeholder='Нормер телефона'
+    .form-group
+      input.form-control type='email' name='email' data-ng-model='user.email' placeholder='Адрес электронной почты'
+    button.btn.btn-red.btn-block type='submit' Подтвердить запись
 
-  button.btn.btn-red.btn-block type='submit' Подтвердить запись
+  div data-ng-if='success' data-ng-include="'views/reservation_success.html'"
