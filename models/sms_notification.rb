@@ -3,7 +3,7 @@ class SmsNotification < ActiveRecord::Base
 
   has_many :sms_notification_reports
 
-  after_create :notify!
+  after_create -> { Thread.new { notify! } }
 
   private
 

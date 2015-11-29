@@ -33,6 +33,6 @@ class Reservation < ActiveRecord::Base
   end
 
   def send_sms_notification
-    #sms_notifications.create
+    sms_notifications.create
   end
 end

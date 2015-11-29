@@ -6,7 +6,8 @@ gem 'sinatra-activerecord'
 gem 'pg'
 gem 'unicorn'
 
-gem 'sidekiq'
+#gem 'sidekiq'
+gem 'actionmailer'
 
 gem 'slim'
 gem 'sass'

@@ -4,7 +4,7 @@ require './env'
 require 'sprite_factory'
 require 'bootstrap-sass'
 require 'socket'
-require 'sidekiq'
+#require 'sidekiq'
 require 'pry'
 
 before do
