@@ -19,6 +19,13 @@ map '/sidekiq' do
   run Sidekiq::Web
 end
 =end
+
+get '/reservations' do
+  protected!
+
+  slim(:reservations)
+end
+
 post '/reservation' do
   time = Time.at(body_params[:time].to_s.first(10).to_i).in_time_zone('UTC')
 
@@ -50,8 +57,6 @@ get '/reservations/:view/:time' do
 end
 
 post '/sms_notification_report/:id' do
-  binding.pry
-
   SMSNotification.find(params[:id]).sms_notification_reports.create(params: body_params)
 
   status 200
@@ -117,5 +122,16 @@ end
 helpers do
   def local?
     Router.local?
+  end
+
+  def protected!
+    return if authorized?
+    headers['WWW-Authenticate'] = 'Basic realm="Restricted Area"'
+    halt 401, "Not authorized\n"
+  end
+
+  def authorized?
+    @auth ||=  Rack::Auth::Basic::Request.new(request.env)
+    @auth.provided? && @auth.basic? && @auth.credentials && @auth.credentials == YAML.load(IO.read('config/credentials.yml'))
   end
 end
