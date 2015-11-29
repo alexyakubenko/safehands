@@ -36,6 +36,8 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.9.1.1)
+    concurrent-ruby (1.0.0)
+    connection_pool (2.2.0)
     execjs (2.5.2)
     highline (1.7.1)
     i18n (0.7.0)
@@ -60,9 +62,15 @@ GEM
       rack
     raindrops (0.13.0)
     rake (10.4.2)
+    redis (3.2.2)
     rvm-capistrano (1.5.6)
       capistrano (~> 2.15.4)
     sass (3.4.13)
+    sidekiq (4.0.1)
+      concurrent-ruby (~> 1.0)
+      connection_pool (~> 2.2, >= 2.2.0)
+      json (~> 1.0)
+      redis (~> 3.2, >= 3.2.1)
     sinatra (1.4.6)
       rack (~> 1.4)
       rack-protection (~> 1.4)
@@ -102,9 +110,13 @@ DEPENDENCIES
   rake
   rvm-capistrano
   sass
+  sidekiq
   sinatra
   sinatra-activerecord
   slim
   sprite-factory
   uglifier
   unicorn
+
+BUNDLED WITH
+   1.10.6

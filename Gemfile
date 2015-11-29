@@ -6,6 +6,8 @@ gem 'sinatra-activerecord'
 gem 'pg'
 gem 'unicorn'
 
+gem 'sidekiq'
+
 gem 'slim'
 gem 'sass'
 gem 'coffee-script'

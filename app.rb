@@ -4,10 +4,19 @@ require './env'
 require 'sprite_factory'
 require 'bootstrap-sass'
 require 'socket'
+require 'sidekiq'
 require 'pry'
 
 before do
   content_type :json
+end
+
+map '/sidekiq' do
+  use Rack::Auth::Basic, "Protected Area" do |username, password|
+    username == 'sidekiq' && password == 'sidekiq'
+  end
+
+  run Sidekiq::Web
 end
 
 post '/reservation' do
