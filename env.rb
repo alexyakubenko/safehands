@@ -1,12 +1,13 @@
 require 'sinatra'
 require 'active_record'
 require 'action_mailer'
-require 'pry'
 
 require './mailer'
 
 Dir['lib/**/*.rb'].each { |model_file| require "./#{ model_file }" }
 Dir['models/**/*.rb'].each { |model_file| require "./#{ model_file }" }
+
+require 'pry' if Router.local?
 
 Encoding.default_external = 'utf-8'
 
@@ -21,7 +22,7 @@ set :views, './'
 
 ActionMailer::Base.view_paths = './views'
 
-if false#Router.local?
+if Router.local?
   ActionMailer::Base.delivery_method = :file
   ActionMailer::Base.file_settings = { location: './tmp/emails' }
 else
