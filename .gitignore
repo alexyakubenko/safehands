@@ -3,9 +3,11 @@
 .sass-cache
 
 public
+tmp
 
 safehands.pem
 
 config/database.yml
 config/twilio.yml
 config/credentials.yml
+config/smtp.yml

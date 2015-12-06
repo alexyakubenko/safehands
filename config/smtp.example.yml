@@ -1,0 +1,6 @@
+:address: smtp.yandex.ru
+:port: 25
+:authentication: :plain
+:user_name: username
+:password: password
+:domain: safehands.by

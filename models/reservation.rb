@@ -33,7 +33,7 @@ class Reservation < ActiveRecord::Base
   private
 
   def send_email_notification
-
+    Thread.new { Mailer.new_reservation(self).deliver_now }
   end
 
   def send_sms_notification

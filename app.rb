@@ -5,7 +5,6 @@ require 'sprite_factory'
 require 'bootstrap-sass'
 require 'socket'
 #require 'sidekiq'
-require 'pry'
 
 before do
   content_type :json
