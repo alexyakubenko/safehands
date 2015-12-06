@@ -18,6 +18,10 @@ class Reservation < ActiveRecord::Base
 
   has_many :sms_notifications
 
+  def status_text
+    STATUSES[self.status]
+  end
+
   def text_sms
     %{
     Запись #{ self.time.strftime("%D %T") }.

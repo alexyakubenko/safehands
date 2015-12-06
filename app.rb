@@ -20,8 +20,12 @@ map '/sidekiq' do
 end
 =end
 
-get '/reservations' do
+get '/reservations/?:prev?' do
   protected!
+
+  content_type :html
+
+  IO.write('public/reservations.css', sass(:reservations, style: :compressed))
 
   slim(:reservations)
 end
@@ -37,6 +41,14 @@ post '/reservation' do
   )
 
   { success: !!reservation.save }.to_json
+end
+
+get '/reservations/:id/change_status/:status_id' do
+  reservation = Reservation.find(params[:id])
+  reservation.status = params[:status_id]
+  reservation.save
+
+  redirect to('/reservations')
 end
 
 get '/reservations/:view/:time' do

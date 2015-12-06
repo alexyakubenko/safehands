@@ -1,0 +1,53 @@
+@import bootstrap/_variables
+
+@import bootstrap/mixins/_table-row
+@import bootstrap/mixins/_text-emphasis
+@import bootstrap/mixins/_background-variant
+@import bootstrap/mixins/_clearfix
+@import bootstrap/mixins/_text-overflow
+@import bootstrap/mixins/_tab-focus
+@import bootstrap/mixins/_opacity
+@import bootstrap/mixins/_vendor-prefixes
+@import bootstrap/mixins/_buttons
+@import bootstrap/mixins/_border-radius
+
+@import bootstrap/_tables
+@import bootstrap/_type
+@import bootstrap/_buttons
+@import bootstrap/_button-groups
+
+body
+  font-family: 'Open Sans', sans-serif
+  margin: 0
+  .header
+    position: fixed
+    z-index: 1
+    top: 0
+    text-align: center
+    width: 100%
+    h1
+      background-color: #e0fffe
+      margin: 0
+      padding-top: 20px
+    .prev
+      font-size: 10px
+      display: block
+      height: 30px
+      line-height: 30px
+      background: linear-gradient(to bottom, #e0fffe, transparent)
+  table.table
+    margin: 80px 0 0 0
+    border-spacing: 0
+    thead
+      tr
+        th
+          border: none
+    tbody
+      tr
+        td
+          border-width: 0
+          .btn
+            text-decoration: none
+        &.new-day
+          td
+            border-top-width: 1px

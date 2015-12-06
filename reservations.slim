@@ -1,1 +1,42 @@
-h1 Записи на шиномонтаж
+doctype html
+html
+  head
+    title Список людей записавшихся на шиномонтаж
+    link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600&subset=cyrillic' rel='stylesheet' type='text/css'
+    link href='/reservations.css' rel='stylesheet' type='text/css'
+  body
+    .header
+      h1 Список людей записавшихся на шиномонтаж
+      a.prev href="/reservations/#{ params[:prev].to_i + 1 }"= "заргузить неделю раньше ↑ (#{ Reservation.where("time BETWEEN ? AND ?", (params[:prev].to_i + 2).weeks.ago.to_s('%db'), (params[:prev].to_i + 1).weeks.ago.to_s('%db')).count } из #{ Reservation.where("time <= ?", (params[:prev].to_i + 1).weeks.ago.to_s('%db')).count })"
+
+    table.table.table-hover.text-center
+      thead
+        tr
+          th.text-center Дата
+          th.text-center Время
+          th.text-center Имя
+          th.text-center Телефон
+          th.text-center e-mail
+          th.text-center Статус
+          th.text-center Сменить статус
+      tbody
+        - reservations = Reservation.where("time >= ?", params[:prev].to_i.weeks.ago.to_s('%db')).order(:time).all
+        - reservations.size.times do |i|
+          - reservation = reservations[i]
+          - prev_reservation = reservations[i - 1]
+          - new_day = prev_reservation && prev_reservation.time.beginning_of_day != reservation.time.beginning_of_day
+          tr class="#{ 'new-day' if new_day }"
+            td= reservation.time.strftime('%d %b %Y') if new_day
+            td= reservation.time.strftime('%H:%M')
+            td= reservation.name
+            td= reservation.phone
+            td= reservation.email
+            td= reservation.status_text
+            td
+              .btn-group role='group'
+                - Reservation::STATUSES.each do |status, name|
+                  - css_class = { Reservation::QUEUED => 'info', Reservation::MISSED => 'danger', Reservation::SERVED => 'success' }[status]
+                  - if reservation.status == status
+                    a.btn.btn-xs class="btn-#{ css_class }" disabled='disabled'= name
+                  - else
+                    a.btn.btn-xs class="btn-#{ css_class }" href="reservations/#{ reservation.id }/change_status/#{ status }"= name
