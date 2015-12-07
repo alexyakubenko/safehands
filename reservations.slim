@@ -24,7 +24,7 @@ html
         - reservations.size.times do |i|
           - reservation = reservations[i]
           - prev_reservation = reservations[i - 1]
-          - new_day = prev_reservation && prev_reservation.time.beginning_of_day != reservation.time.beginning_of_day
+          - new_day = !prev_reservation || prev_reservation.time.beginning_of_day != reservation.time.beginning_of_day
           tr class="#{ 'new-day' if new_day }"
             td= reservation.time.strftime('%d %b %Y') if new_day
             td= reservation.time.strftime('%H:%M')
