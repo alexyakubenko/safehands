@@ -79,18 +79,23 @@ get '*' do
   views_public_dir = 'public/views'
 
   if !Dir.exist?(views_public_dir) || local?
+=begin
     Dir.glob('views/templates/**/*.slim').each do |view_file_path|
       view_dir = File.join(views_public_dir, view_file_path.split('/')[2..-2])
       view_file = File.basename(view_file_path, '.slim')
       FileUtils.mkdir_p(view_dir) unless Dir.exist?(view_dir)
       IO.write(File.join(view_dir, view_file), Slim::Template.new(view_file_path).render(self))
     end
-
+=end
     IO.write('public/index.html', slim(:app))
 
     IO.write('public/app.css', sass(:app, style: :compressed))
 
-    app_js_content = CoffeeScript.compile(
+    app_js_content = Dir.glob('js/**/*.js.erb').sort.map do |script_file_path|
+      Erubis::Eruby.new(IO.read(script_file_path)).result
+    end.join("\n")
+
+    app_js_content += CoffeeScript.compile(
         Dir.glob('js/**/*.coffee').sort.map do |script_file_path|
           IO.read(script_file_path)
         end.join("\n")
