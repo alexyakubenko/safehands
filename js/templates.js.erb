@@ -7,6 +7,6 @@ angular.module('templates', []).run([ '$templateCache', function($templateCache)
     Dir.glob("#{ templates_path }/**/*.html.slim").each do |f|
       key = f.gsub(templates_path, '').split('.').first
       content = Slim::Template.new { IO.read(f) }.render %>
-      $templateCache.put("<%= key %>.html", "<%= escape_javascript(content) %>");
+      $templateCache.put("views<%= key %>.html", "<%= escape_javascript(content) %>");
   <% end %>
 }]);
