@@ -3,7 +3,7 @@ require 'rvm/capistrano'
 require 'capistrano-unicorn'
 
 #server 'safehands.by', :app, :db, primary: true
-server '178.124.143.3', :app, :db, primary: true
+server '178.124.130.50', :app, :db, primary: true
 set :user, 'deployer'
 
 set :rvm_ruby_string, 'ruby-2.2.3@safehands'
