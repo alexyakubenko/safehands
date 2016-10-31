@@ -69,7 +69,7 @@ end
 
 post '/sms_notification_report/:id' do
   notification = Rack::Utils.parse_nested_query(request.body.read)
-  SMSNotification.find(params[:id]).sms_notification_reports.create(params: notification)
+  SmsNotification.find(params[:id]).sms_notification_reports.create(params: notification)
   status 200
 end
 
