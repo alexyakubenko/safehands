@@ -68,7 +68,7 @@ get '/reservations/:view/:time' do
 end
 
 post '/sms_notification_report/:id' do
-  SMSNotification.find(params[:id]).sms_notification_reports.create(params: body_params)
+  SmsNotification.find(params[:id]).sms_notification_reports.create(params: body_params)
 
   status 200
 end
