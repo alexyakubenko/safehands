@@ -68,8 +68,8 @@ get '/reservations/:view/:time' do
 end
 
 post '/sms_notification_report/:id' do
-  SmsNotification.find(params[:id]).sms_notification_reports.create(params: body_params)
-
+  notification = Rack::Utils.parse_nested_query(request.body.read)
+  SMSNotification.find(params[:id]).sms_notification_reports.create(params: notification)
   status 200
 end
 
