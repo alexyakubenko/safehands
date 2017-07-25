@@ -3,12 +3,12 @@ require 'rvm/capistrano'
 require 'capistrano-unicorn'
 
 #server 'safehands.by', :app, :db, primary: true
-server '178.124.130.50', :app, :db, primary: true
+server '10.229.69.51', :app, :db, primary: true
 set :user, 'deployer'
 
-set :rvm_ruby_string, 'ruby-2.2.3@safehands'
-set :rvm_type, :system
-set :rvm_path, "/home/#{ user }/.rvm"
+set :rvm_ruby_string, 'ruby-2.3.0@safehands'
+#set :rvm_type, :user
+#set :rvm_path, "/home/#{ user }/.rvm"
 
 set :application, 'safehands'
 set :deploy_to, "/home/#{ user }/apps/#{ application }"
