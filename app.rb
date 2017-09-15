@@ -19,6 +19,10 @@ map '/sidekiq' do
 end
 =end
 
+get '/ping' do
+  'OK'
+end
+
 get '/reservations/?:prev?' do
   protected!
 
