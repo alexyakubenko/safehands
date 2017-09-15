@@ -5,7 +5,7 @@ stderr_path "#{ root }/log/unicorn_out.log"
 stdout_path "#{ root }/log/unicorn_err.log"
 
 listen '/tmp/unicorn.safehands.sock'
-worker_processes 4
+worker_processes 8
 timeout 30
 
 preload_app true
