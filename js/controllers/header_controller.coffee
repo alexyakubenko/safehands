@@ -2,7 +2,7 @@ class HeaderController
   constructor: ($scope) ->
     $scope.contacts = [
       { name: 'Александр', vk_url: 'https://vk.com/id218785045', phone: '+375 (29) 574 22 95', gsm: 'mts' }#,
-      { name: '',   vk_url: '', phone: '+375 (44) 574 22 93', gsm: 'velcom' }
+      { name: null,   vk_url: '', phone: '+375 (44) 574 22 93', gsm: 'velcom' }
     ]
 
     $scope.isHomePage = ->
