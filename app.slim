@@ -46,7 +46,6 @@ html data-ng-app='safeHandsApp'
       #contacts
         .phone data-ng-repeat='contact in contacts'
           a data-ng-href='{{ contact.vk_url }}' target='_blank' {{ contact.name }}
-          span data-ng-if="contact.name" :
           a.number data-ng-href="{{ contact.phone | phoneLink }}" {{ contact.phone }}
           .icon data-ng-class="'icon-' + contact.gsm"
     #content data-ng-view=''
