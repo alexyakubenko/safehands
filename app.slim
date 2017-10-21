@@ -18,7 +18,7 @@ html data-ng-app='safeHandsApp'
     link href='/css/vendor/datetimepicker.css' rel='stylesheet' type='text/css'
 
     script src='//api-maps.yandex.ru/2.1.27/?lang=ru_RU&load=Map,Polyline,control.ZoomControl,control.TypeSelector,Placemark,geoObject.addon.balloon,geoObject.addon.hint,route,templateLayoutFactory' type='text/javascript'
-
+    script src='//use.fontawesome.com/820a2186a2.js'
     - if local?
       script src='/js/vendor/angular.js' type='text/javascript'
       //script src='/js/vendor/angular-sanitize.js' type='text/javascript'
@@ -56,11 +56,11 @@ html data-ng-app='safeHandsApp'
       a#request-button.btn-red href='/reservation' data-ng-hide="hideReservationButton()" ЗАПИСАТЬСЯ НА ШИНОМОНТАЖ
       #social-buttons
         a href='skype:safehandsby'
-          .icon.icon-skype
+          i.fa.fa-skype aria-hidden='true'
         a href='mailto:mail@safehands.by'
-          .icon.icon-mail
-        a href='https://vk.com/safehandsby' target='_blank'
-          .icon.icon-vk
+          i.fa.fa-envelope aria-hidden='true'
+        a href='https://www.instagram.com/safehandsby/' target='_blank'
+          i.fa.fa-instagram aria-hidden='true'
 
       - unless local?
         == erb :'views/_yandex_metrica'
