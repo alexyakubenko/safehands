@@ -20,6 +20,7 @@ end
 =end
 
 get '/ping' do
+  Reservation.count
   'OK'
 end
 
