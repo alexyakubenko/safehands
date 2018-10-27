@@ -22,55 +22,23 @@ if true
 
     ymaps.ready ->
       mark = new ymaps.Placemark(
-        [53.904941, 27.52385], {
+        [53.887352, 27.455577], {
           iconContent: 'Надежные Руки',
-          hintContent: 'Шиномонтаж, СТО, Полировка, Химчистка',
+          hintContent: 'Шиномонтаж',
           balloonContentHeader: 'ООО «Надежные Руки»',
-          balloonContentBody: 'СТО, Шиномонтаж, Полировка, Химчистка',
-          balloonContentFooter: 'г. Минск, ул. Харьковская 2А'
+          balloonContentBody: 'Шиномонтаж',
+          balloonContentFooter: 'г. Минск, ул. Шаранговича 19'
         }, {
           preset: 'islands#blueStretchyIcon'
         }
       )
 
-      mark.events.add('mouseenter', (e) ->
-        e.get('target').options.set('preset', 'islands#greenStretchyIcon')
-      ).add('mouseleave', (e) ->
-        e.get('target').options.set('preset', 'islands#blueStretchyIcon')
-      )
-
-      polyLine = new ymaps.Polyline([
-        [53.90600409, 27.52183597],
-        [53.90583304, 27.52313416],
-        [53.90561764, 27.52353113],
-        [53.904941, 27.52385]
-      ], {
-        hintContent: 'Проезд по стоянке грузовиков'
-      }, {
-        strokeColor: ['#000088', '#E63E92'],
-        strokeWidth: [7, 2],
-        strokeStyle: [0, 'dash'],
-        strokeOpacity: [0.23, 1]
-      })
-
       myMap = new ymaps.Map('map', {
-        center: [53.906805, 27.522741],
-        zoom: 16,
+        center: [53.895804, 27.455577],
+        zoom: 14,
         type: 'yandex#map'
       })
 
       myMap.geoObjects.add(mark)
       myMap.controls.add(new ymaps.control.TypeSelector(), { position: { top: 128, right: 20 } })
       myMap.controls.add(new ymaps.control.ZoomControl(), { position: { top: 128, left: 20 } })
-
-      ymaps.route([
-        '53.90551627, 27.53785000',
-        '53.90600409, 27.52183597'
-      ], {
-        multiRoute: true
-      }).then (route) ->
-        gatesWayPoint = route.getWayPoints().get(1)
-        ymaps.geoObject.addon.hint.get(gatesWayPoint)
-        gatesWayPoint.options.set hintContentLayout: ymaps.templateLayoutFactory.createClass('Въезд под шлагбаум')
-
-        myMap.geoObjects.add(route).add(polyLine)
