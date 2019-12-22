@@ -1,1 +1,1 @@
-rvm use ruby-2.3.0@safehands --create
+rvm use ruby-2.5@safehands --create
