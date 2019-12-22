@@ -1,11 +1,11 @@
-root = '/home/deployer/apps/safehands/current'
+root = '/home/root/apps/safehands/current'
 working_directory root
 pid "#{ root }/tmp/pids/unicorn.pid"
 stderr_path "#{ root }/log/unicorn_out.log"
 stdout_path "#{ root }/log/unicorn_err.log"
 
 listen '/tmp/unicorn.safehands.sock'
-worker_processes 2
+worker_processes 1
 timeout 30
 
 preload_app true

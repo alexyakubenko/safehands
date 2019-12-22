@@ -9,6 +9,7 @@ server '45.132.19.29', :app, primary: true
 set :user, 'root'
 
 set :rvm_ruby_string, 'ruby-2.5@safehands'
+set :rvm_path, '/usr/share/rvm/'
 
 set :application, 'safehands'
 set :deploy_to, "/home/#{ user }/apps/#{ application }"
@@ -32,7 +33,7 @@ namespace :deploy do
   task :restart, roles: :app, except: { no_release: true } do
     unicorn.duplicate
   end
-  
+
   task :symlink_config, roles: :app do
     %w{
       twilio.yml
