@@ -7,7 +7,7 @@ tmp
 
 safehands.pem
 dump.sql
-
+config/certs
 config/database.yml
 config/twilio.yml
 config/credentials.yml
