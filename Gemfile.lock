@@ -37,12 +37,11 @@ GEM
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
     arel (6.0.0)
-    autoprefixer-rails (5.1.8.1)
+    autoprefixer-rails (9.7.3)
       execjs
-      json
-    bootstrap-sass (3.3.4.1)
-      autoprefixer-rails (>= 5.0.0.1)
-      sass (>= 3.2.19)
+    bootstrap-sass (3.4.1)
+      autoprefixer-rails (>= 5.2.1)
+      sassc (>= 2.0.0)
     builder (3.2.2)
     capistrano (2.15.5)
       highline
@@ -59,7 +58,8 @@ GEM
       execjs
     coffee-script-source (1.9.1.1)
     erubis (2.7.0)
-    execjs (2.5.2)
+    execjs (2.7.0)
+    ffi (1.11.3)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
     highline (1.7.1)
@@ -106,6 +106,8 @@ GEM
     rvm-capistrano (1.5.6)
       capistrano (~> 2.15.4)
     sass (3.4.13)
+    sassc (2.2.1)
+      ffi (~> 1.9)
     sinatra (1.4.8)
       rack (~> 1.5)
       rack-protection (~> 1.4)
