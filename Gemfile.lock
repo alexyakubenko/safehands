@@ -102,7 +102,7 @@ GEM
     rails-html-sanitizer (1.0.2)
       loofah (~> 2.0)
     raindrops (0.13.0)
-    rake (10.4.2)
+    rake (12.3.3)
     rvm-capistrano (1.5.6)
       capistrano (~> 2.15.4)
     sass (3.4.13)
