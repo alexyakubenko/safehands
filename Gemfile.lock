@@ -58,6 +58,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.9.1.1)
+    crass (1.0.6)
     erubis (2.7.0)
     execjs (2.5.2)
     globalid (0.3.6)
@@ -66,7 +67,8 @@ GEM
     i18n (0.7.0)
     json (1.8.6)
     kgio (2.9.3)
-    loofah (2.0.3)
+    loofah (2.18.0)
+      crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
@@ -99,8 +101,8 @@ GEM
       activesupport (>= 4.2.0.beta, < 5.0)
       nokogiri (~> 1.6.0)
       rails-deprecated_sanitizer (>= 1.0.1)
-    rails-html-sanitizer (1.0.2)
-      loofah (~> 2.0)
+    rails-html-sanitizer (1.4.3)
+      loofah (~> 2.3)
     raindrops (0.13.0)
     rake (10.4.2)
     rvm-capistrano (1.5.6)
