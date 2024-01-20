@@ -1,4 +1,4 @@
-FROM ruby:2.5-alpine
+FROM ruby:3.1.2-alpine
 
 RUN addgroup -S safehands \
   && adduser -S -D -s /bin/false -G safehands -g safehands safehands
@@ -28,9 +28,9 @@ EXPOSE 8080
 
 COPY ["Gemfile", "Gemfile.lock", "/app/"]
 
-RUN apk add --no-cache --virtual build-dependencies build-base \
-  && bundle install --without development \
-  && apk del build-dependencies
+RUN apk add --no-cache --virtual build-dependencies build-base && \
+    bundle install --clean --force && \
+    apk del build-dependencies
 
 COPY . /app
 
@@ -40,6 +40,8 @@ USER safehands
 
 HEALTHCHECK CMD curl --fail http://localhost:$PORT/ping || exit 1
 
-ENTRYPOINT ["docker/startup.sh"]
+#ENTRYPOINT ["docker/startup.sh"]
 
-CMD ["docker/run_web_server.sh"]
+#CMD ["docker/run_web_server.sh"]
+EXPOSE 4567
+CMD bundle exec rackup --host 0.0.0.0 -p 4567

@@ -4,6 +4,7 @@ require './env'
 require 'sprite_factory'
 require 'bootstrap-sass'
 require 'socket'
+require 'pry'
 #require 'sidekiq'
 
 before do
@@ -97,7 +98,7 @@ get '*' do
     IO.write('public/app.css', sass(:app, style: :compressed))
 
     app_js_content = Dir.glob('js/**/*.js.erb').sort.map do |script_file_path|
-      Erubis::Eruby.new(IO.read(script_file_path)).result
+      ERB.new(IO.read(script_file_path)).result
     end.join("\n")
 
     app_js_content += CoffeeScript.compile(

@@ -13,7 +13,7 @@ gem 'slim'
 gem 'sass'
 gem 'coffee-script'
 gem 'uglifier'
-gem 'bootstrap-sass'
+gem 'bootstrap-sass', '3.3.4.1'
 
 gem 'sprite-factory'
 gem 'chunky_png'
@@ -25,3 +25,5 @@ group :development do
   gem 'rvm-capistrano', require: false
   gem 'pry'
 end
+
+gem "rackup", "~> 2.1"
