@@ -82,9 +82,7 @@ end
 get '*' do
   content_type :html
 
-  views_public_dir = 'public/views'
-
-  if !Dir.exist?(views_public_dir) || local?
+  if !File.exist?('public/index.html') || local?
 =begin
     Dir.glob('views/templates/**/*.slim').each do |view_file_path|
       view_dir = File.join(views_public_dir, view_file_path.split('/')[2..-2])
@@ -133,7 +131,6 @@ get '*' do
 
     FileUtils.cp('favicon.ico', 'public/favicon.ico')
   end
-
   IO.read('public/index.html')
 end
 
