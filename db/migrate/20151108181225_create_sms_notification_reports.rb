@@ -1,4 +1,4 @@
-class CreateSmsNotificationReports < ActiveRecord::Migration
+class CreateSmsNotificationReports < ActiveRecord::Migration[7.1]
   def change
     create_table :sms_notification_reports do |t|
       t.text :params

@@ -39,7 +39,6 @@ namespace :deploy do
       twilio.yml
       smtp.yml
       credentials.yml
-      database.yml
     }.each do |config_file_name|
       run "ln -nfs #{ shared_path }/config/#{config_file_name} #{ release_path }/config/#{config_file_name}"
     end

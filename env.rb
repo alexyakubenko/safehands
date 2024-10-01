@@ -1,6 +1,6 @@
 require 'sinatra'
-require 'active_record'
 require 'action_mailer'
+require "sinatra/activerecord"
 
 require './mailer'
 
@@ -11,12 +11,19 @@ require 'pry' if Router.local?
 
 Encoding.default_external = 'utf-8'
 
-unless ActiveRecord::Base.connected?
-  db_config = YAML::load(IO.read('./config/database.yml'))
+#unless ActiveRecord::Base.connected?
+#  db_config = YAML::load(IO.read('./config/database.yml'))
 
-  ActiveRecord::Base.establish_connection(db_config)
-  ActiveRecord::Base.logger = Logger.new(STDOUT)
-end
+#  ActiveRecord::Base.establish_connection(db_config)
+#  ActiveRecord::Base.logger = Logger.new(STDOUT)
+#end
+
+register Sinatra::ActiveRecordExtension
+
+set :database, {
+  adapter: "postgresql",
+  url: ENV["DB_URL"]
+}
 
 set :views, './'
 

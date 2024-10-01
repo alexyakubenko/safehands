@@ -1,4 +1,4 @@
-class CreateSmsNotifications < ActiveRecord::Migration
+class CreateSmsNotifications < ActiveRecord::Migration[7.1]
   def change
     create_table :sms_notifications do |t|
       t.text :response_body
