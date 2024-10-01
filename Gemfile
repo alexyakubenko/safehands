@@ -18,6 +18,9 @@ gem 'bootstrap-sass', '3.3.4.1'
 gem 'sprite-factory'
 gem 'chunky_png'
 
+gem 'tzinfo-data'
+gem 'tzinfo'
+
 group :development do
   gem 'pry'
 end
