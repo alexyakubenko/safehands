@@ -7,7 +7,7 @@ html
   body
     .header
       h1 Список людей записавшихся на шиномонтаж
-      a.prev href="/reservations/#{ params[:prev].to_i + 1 }"= "заргузить неделю раньше ↑ (#{ Reservation.where("time BETWEEN ? AND ?", (params[:prev].to_i + 2).weeks.ago.to_s('%db'), (params[:prev].to_i + 1).weeks.ago.to_s('%db')).count } из #{ Reservation.where("time <= ?", (params[:prev].to_i + 1).weeks.ago.to_s('%db')).count })"
+      a.prev href="/reservations/#{ params[:prev].to_i + 1 }"= "заргузить неделю раньше ↑ (#{ Reservation.where(time: (params[:prev].to_i + 2).weeks.ago..(params[:prev].to_i + 1).weeks.ago).count } из #{ Reservation.where(time: ..(params[:prev].to_i + 1).weeks.ago).count })"
 
     table.table.table-hover.text-center
       thead
@@ -20,7 +20,7 @@ html
           th.text-center Статус
           th.text-center Сменить статус
       tbody
-        - reservations = Reservation.where("time >= ?", params[:prev].to_i.weeks.ago.to_s('%db')).order(:time).all
+        - reservations = Reservation.where(time: params[:prev].to_i.weeks.ago..).order(:time).all
         - reservations.size.times do |i|
           - reservation = reservations[i]
           - prev_reservation = reservations[i - 1]

@@ -20,6 +20,7 @@ Encoding.default_external = 'utf-8'
 
 register Sinatra::ActiveRecordExtension
 
+ActiveRecord::Base.logger = Logger.new(STDOUT)
 set :database, {
   adapter: "postgresql",
   url: ENV["DB_URL"]
