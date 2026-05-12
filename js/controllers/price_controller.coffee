@@ -4,7 +4,7 @@ class PriceController
       tires: {
         name: 'шиномонтаж'
         prices: {
-          light: { name: 'Легковое авто / Минивэн' }
+          light: { name: 'Легковушка / Минивэн' }
           medium: { name: 'Внедорожник / Микроавтобус' },
           heavy: { name: 'Легко-грузовой авто' },
           special: { name: 'Сельхозтехника' }
