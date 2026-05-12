@@ -21,12 +21,18 @@ if true
     resizeMap()
 
     ymaps.ready ->
+      coords = [53.85128, 27.42097]
+      routeUrl = "https://yandex.ru/maps/?rtext=~#{ coords[0] },#{ coords[1] }&rtt=auto"
+
       mark = new ymaps.Placemark(
-        [53.85128, 27.42097], {
+        coords, {
           iconContent: 'Надежные Руки',
           hintContent: 'Шиномонтаж',
           balloonContentHeader: 'ООО «Надежные Руки»',
-          balloonContentBody: 'Шиномонтаж',
+          balloonContentBody: [
+            'Шиномонтаж',
+            "<br><a class='btn-red route-button' href='#{ routeUrl }' target='_blank' rel='noopener'>Построить маршрут</a>"
+          ].join(''),
           balloonContentFooter: 'г. Минск, ул. Меньковский тракт 2'
         }, {
           preset: 'islands#blueStretchyIcon'
@@ -34,7 +40,7 @@ if true
       )
 
       myMap = new ymaps.Map('map', {
-        center: [53.895804, 27.455577],
+        center: coords,
         zoom: 14,
         type: 'yandex#map'
       })
