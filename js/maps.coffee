@@ -22,12 +22,12 @@ if true
 
     ymaps.ready ->
       mark = new ymaps.Placemark(
-        [53.887352, 27.455577], {
+        [53.85128, 27.42097], {
           iconContent: 'Надежные Руки',
           hintContent: 'Шиномонтаж',
           balloonContentHeader: 'ООО «Надежные Руки»',
           balloonContentBody: 'Шиномонтаж',
-          balloonContentFooter: 'г. Минск, ул. Шаранговича 19'
+          balloonContentFooter: 'г. Минск, ул. Меньковский тракт 2'
         }, {
           preset: 'islands#blueStretchyIcon'
         }

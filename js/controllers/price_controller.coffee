@@ -6,7 +6,7 @@ class PriceController
         prices: {
           light: { name: 'Легковое авто / Минивэн' }
           medium: { name: 'Внедорожник / Микроавтобус' },
-          heavy: { name: 'Грузовой авто' },
+          heavy: { name: 'Легко-грузовой авто' },
           special: { name: 'Сельхозтехника' }
         },
       },

@@ -1,6 +1,6 @@
 module Router
   def self.local?
-    Socket.gethostname == 'Alexs-MacBook-Pro.local'
+    Socket.gethostname == 'Alexs-MacBook-Pro-2.local'
   end
 
   def self.base_url
