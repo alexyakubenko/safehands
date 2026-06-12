@@ -5,6 +5,16 @@ export const contacts = [
   },
 ];
 
+export const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://safehands.by";
+
+export const organizationName = "ООО «Надежные Руки»";
+
+export const businessAddress = {
+  streetAddress: "Меньковский тракт, 2",
+  addressLocality: "Минск",
+  addressCountry: "BY",
+};
+
 export const reservationStatuses = {
   0: "Записан",
   1: "Обслужен",

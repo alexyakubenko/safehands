@@ -4,6 +4,10 @@ import { ensureDatabase, prisma } from "@/lib/prisma";
 
 export const metadata: Metadata = {
   title: "Список людей записавшихся на шиномонтаж",
+  robots: {
+    index: false,
+    follow: false,
+  },
 };
 
 export const dynamic = "force-dynamic";

@@ -9,11 +9,25 @@ type Props = {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug = [] } = await params;
   const selection = getPriceSelection(slug[0], slug[1]);
+  const canonical = selection.carKey ? `/price/${selection.serviceKey}/${selection.carKey}` : `/price/${selection.serviceKey}`;
+  const title = selection.car
+    ? `Цены на ${selection.service.name}: ${selection.car.name}`
+    : `Цены на ${selection.service.name}`;
+  const description = selection.car
+    ? `Актуальные цены на ${selection.service.name} для категории «${selection.car.name}» в ООО «Надежные Руки» в Минске.`
+    : `Актуальные цены на ${selection.service.name} в ООО «Надежные Руки» в Минске.`;
 
   return {
-    title: selection.car
-      ? `Шиномонтаж «Надежные Руки» Минск. Цены на услугу ${selection.service.name} для ${selection.car.name}`
-      : `Шиномонтаж «Надежные Руки» Минск. Цены на услугу ${selection.service.name}`,
+    title,
+    description,
+    alternates: {
+      canonical,
+    },
+    openGraph: {
+      title,
+      description,
+      url: canonical,
+    },
   };
 }
 
