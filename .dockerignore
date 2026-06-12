@@ -1,0 +1,11 @@
+.git
+.next
+.sass-cache
+node_modules
+npm-debug.log
+tmp
+log
+coverage
+.env
+data/*.db
+data/*.db-*

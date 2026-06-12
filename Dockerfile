@@ -1,47 +1,35 @@
-FROM ruby:3.1.2-alpine
-
-RUN addgroup -S safehands \
-  && adduser -S -D -s /bin/false -G safehands -g safehands safehands
-
-# throw errors if Gemfile has been modified since Gemfile.lock
-RUN echo "gem: --no-document" >> /etc/gemrc \
-  && bundle config --global frozen 1 \
-  && bundle config --global clean true \
-  && bundle config --global disable_shared_gems false
-
-RUN mkdir -p /app \
-  && mkdir -p /app/tmp/pids /app/log \
-  && touch app/log/unicorn_out.log \
-  && chown -R safehands:safehands /app \
-  && chmod 700 /app/
+FROM node:22-alpine AS deps
 WORKDIR /app
+COPY package.json package-lock.json ./
+RUN npm ci
 
-RUN gem update --system \
-  && gem install bundler:1.17.1 \
-  && apk add --no-cache \
-    curl \
-    postgresql-dev \
-    postgresql-client \
-    nodejs
+FROM node:22-alpine AS builder
+WORKDIR /app
+ENV NEXT_TELEMETRY_DISABLED=1
+COPY --from=deps /app/node_modules ./node_modules
+COPY . .
+RUN npx prisma generate
+RUN npm run build
 
-EXPOSE 8080
+FROM node:22-alpine AS runner
+WORKDIR /app
+ENV NODE_ENV=production
+ENV NEXT_TELEMETRY_DISABLED=1
+ENV HOSTNAME=0.0.0.0
+ENV PORT=3000
+ENV DATABASE_URL=file:/app/data/safehands.db
 
-COPY ["Gemfile", "Gemfile.lock", "/app/"]
+RUN addgroup -S safehands && adduser -S safehands -G safehands
 
-RUN apk add --no-cache --virtual build-dependencies build-base && \
-    bundle install --clean --force && \
-    apk del build-dependencies
+COPY --from=builder /app/public ./public
+COPY --from=builder /app/prisma ./prisma
+COPY --from=builder --chown=safehands:safehands /app/.next/standalone ./
+COPY --from=builder --chown=safehands:safehands /app/.next/static ./.next/static
 
-COPY . /app
-
-RUN chown -R safehands:safehands /app
+RUN mkdir -p /app/data && chown -R safehands:safehands /app
 
 USER safehands
 
-HEALTHCHECK CMD curl --fail http://localhost:$PORT/ping || exit 1
-
-#ENTRYPOINT ["docker/startup.sh"]
-
-#CMD ["docker/run_web_server.sh"]
-EXPOSE 4567
-CMD bundle exec rackup --host 0.0.0.0 -p 4567
+EXPOSE 3000
+HEALTHCHECK --interval=30s --timeout=5s --start-period=15s CMD wget -qO- http://127.0.0.1:${PORT}/api/health || exit 1
+CMD ["node", "server.js"]

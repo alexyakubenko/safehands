@@ -1,0 +1,42 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Reservation {
+  id        Int      @id @default(autoincrement())
+  name      String
+  phone     String?
+  email     String?
+  time      DateTime @unique
+  status    Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  smsNotifications SmsNotification[]
+}
+
+model SmsNotification {
+  id             Int      @id @default(autoincrement())
+  responseBody   String?
+  reservationId  Int
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  reservation Reservation @relation(fields: [reservationId], references: [id], onDelete: Cascade)
+  reports     SmsNotificationReport[]
+}
+
+model SmsNotificationReport {
+  id                Int      @id @default(autoincrement())
+  params            String
+  smsNotificationId Int
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  smsNotification SmsNotification @relation(fields: [smsNotificationId], references: [id], onDelete: Cascade)
+}

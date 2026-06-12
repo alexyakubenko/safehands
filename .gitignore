@@ -2,12 +2,17 @@
 .capistrano
 .sass-cache
 
-public
+node_modules
+.next
+out
 tmp
+log
+
+.env
+.env*.local
+data/*.db
+data/*.db-*
 
 safehands.pem
 dump.sql
 config/certs
-config/twilio.yml
-config/credentials.yml
-config/smtp.yml
